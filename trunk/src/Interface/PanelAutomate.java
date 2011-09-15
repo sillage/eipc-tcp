@@ -22,8 +22,8 @@ import myLib.ImageSet;
 import kernel.Traitement;
 
 /**
- * Classe définissant le panneau automate
- * @author Rémi TANIWAKI
+ * Classe dÃ©finissant le panneau automate
+ * @author RÃ©mi TANIWAKI
  *
  */
 @SuppressWarnings("serial")
@@ -70,7 +70,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 		Boxstepbystep.addItemListener(this);
 		add(Boxstepbystep);
 		    
-		// combo box des états
+		// combo box des Ã©tats
 		/*listStates = new JComboBox(automate_states);
 		listStates.setBounds(8, 530, 100, 20);
 		listStates.setFont(new Font("Arial", 0, 11));
@@ -91,7 +91,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 	}
 
 	/**
-	 * Charge une texture depuis un fichier dans une map pour créer un couple (texture off, texture on)
+	 * Charge une texture depuis un fichier dans une map pour crÃ©er un couple (texture off, texture on)
 	 * @param text1 chemin du fichier texture "off"
 	 * @param text2 chemin du fichier texture "on"
 	 * @return un couple (texture off, texture on)
@@ -210,8 +210,8 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 	}
 	
 	/**
-	 * Met à jour un état dans l'automate
-	 * Les états : 
+	 * Met Ã  jour un Ã©tat dans l'automate
+	 * Les Ã©tats : 
 	 * CLOSED_INIT,
 	 * LISTEN,
 	 * SYN_RCVD,
@@ -225,7 +225,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 	 * TIME_WAIT,
 	 * CLOSED
 	 * 
-	 * @param state_active Etat à activer
+	 * @param state_active Etat Ã  activer
 	 */
 	public void update_states(String state_active) {
 		String key;
@@ -243,7 +243,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 	}
 	
 	/**
-	 * Override de la méthode paintComponent pour l'update des images
+	 * Override de la mÃ©thode paintComponent pour l'update des images
 	 */
 	public void paintComponent(Graphics g) {
 	    Image bg;
@@ -264,7 +264,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 			}
 		}*/
 		if (action.getSource() == Bnextstep) {
-			// HERE§
+			// HEREÂ§
 			traitement.goGoSend(1);
 		}
 	}

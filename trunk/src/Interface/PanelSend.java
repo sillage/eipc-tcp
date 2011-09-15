@@ -20,9 +20,9 @@ import java.awt.event.ActionListener;
 import java.nio.charset.CharsetEncoder;
 
 /**
- * Classe pour le panneau d'émission de l'interface de l'application.
+ * Classe pour le panneau d'Ã©mission de l'interface de l'application.
  * 
- * @author Rémi TANIWAKI
+ * @author RÃ©mi TANIWAKI
  * 
  */
 @SuppressWarnings("serial")
@@ -40,10 +40,10 @@ public class PanelSend extends JPanel implements ActionListener {
 		setLayout(null);
 		setPreferredSize(new Dimension(300, 300));
 		setBounds(5, 5, 305, 300);
-	    setBorder(new TitledBorder("Datagramme en émission"));
+	    setBorder(new TitledBorder("Datagramme en Ã©mission"));
 	    
-	    	// Numéro de séquence
-	        EnvoiLabNum = new JLabel("Numéro de séquence (32bits)");
+	    	// NumÃ©ro de sÃ©quence
+	        EnvoiLabNum = new JLabel("NumÃ©ro de sÃ©quence (32bits)");
 	        EnvoiLabNum.setFont(new Font("arial", 0, 12));
 	        EnvoiNum = new BoundedTextField("", 32);
 	        EnvoiLabNum.setBounds(10, 15, 180, 20);
@@ -52,8 +52,8 @@ public class PanelSend extends JPanel implements ActionListener {
 	        add(EnvoiLabNum);
 	        add(EnvoiNum);
 	        
-	        // Numéro d'acquitement
-	        EnvoiLabAqu = new JLabel("Numéro d'acquittement (32bits)");
+	        // NumÃ©ro d'acquitement
+	        EnvoiLabAqu = new JLabel("NumÃ©ro d'acquittement (32bits)");
 	        EnvoiLabAqu.setFont(new Font("arial", 0, 12));
 	        EnvoiAqu = new BoundedTextField("", 32);
 	        EnvoiLabAqu.setBounds(10, 55, 180, 20);
@@ -105,8 +105,8 @@ public class PanelSend extends JPanel implements ActionListener {
 	        EnvoiFIN.setBounds(248, 123, 52, 20);
 	        add(EnvoiFIN);
 
-	        // Fenêtre
-	        EnvoiLabFen = new JLabel("Fenêtre (16bits)");
+	        // FenÃªtre
+	        EnvoiLabFen = new JLabel("FenÃªtre (16bits)");
 	        EnvoiLabFen.setFont(new Font("arial", 0, 12));
 	        EnvoiFen = new BoundedTextField("", 16);
 	        EnvoiLabFen.setBounds(10, 135, 285, 20);
@@ -132,7 +132,7 @@ public class PanelSend extends JPanel implements ActionListener {
 	        EnvoiPtr.setBounds(155, 195, 140, 20);
 	        
 	        // Data
-	        EnvoiLabData = new JLabel("Données");
+	        EnvoiLabData = new JLabel("DonnÃ©es");
 	        EnvoiLabData.setFont(new Font("arial", 0, 12));
 	        EnvoiData = new BoundedTextField("", 100);
 	        EnvoiLabData.setBounds(10, 215, 285, 20);
@@ -175,7 +175,7 @@ public class PanelSend extends JPanel implements ActionListener {
 				EnvoiFen.setText(String.valueOf(traitement.getTCB().calcWindow(traitement.getTCB(), algorithme_windows.simple)));
 			}
 			if (EnvoiPtr.getText().equals("")) {
-				EnvoiPtr.setText("0"); // A vérifier
+				EnvoiPtr.setText("0"); // A vÃ©rifier
 			}
 			if (EnvoiChk.getText().equals("")) {
 				common.Segment seg = new common.Segment();

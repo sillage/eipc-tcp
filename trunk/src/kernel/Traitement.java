@@ -16,7 +16,7 @@ public class Traitement {
 	private int state; //1 = Emission - 2 = Reception 
 	
 	/**
-	 * Enumeration des algorithmes de contrôle de flux
+	 * Enumeration des algorithmes de contrÃ´le de flux
 	 */
 	
 	public void setStepByStep(boolean boo) {
@@ -56,7 +56,7 @@ public class Traitement {
 	}
 	
 	/**
-	 * Créé l'instance Traitement si elle n'existe pas déja 
+	 * CrÃ©Ã© l'instance Traitement si elle n'existe pas dÃ©ja 
 	 * ou retourne un pointeur sur l'instance si elle existe.
 	 * @return l'intance Traitement
 	 */
@@ -68,7 +68,7 @@ public class Traitement {
     }
 	
 	/**
-	 * Constructeur par défaut
+	 * Constructeur par dÃ©faut
 	 */
 	private Traitement() {
 		automate = new Automaton();
@@ -100,7 +100,7 @@ public class Traitement {
 	/**
 	 * Appel tous les traitements pour l'envoi
 	 *  
-	 * @param segment = Segment à traiter
+	 * @param segment = Segment Ã  traiter
 	 * @return = Le segment bien rempli
 	 */
 	public Segment makeTreatmentSend(Segment segment) {
@@ -111,9 +111,9 @@ public class Traitement {
 	}
 	
 	/**
-	 * Appel tout les traitements pour la réception
+	 * Appel tout les traitements pour la rÃ©ception
 	 * 
-	 * @param segment = Segment à traiter
+	 * @param segment = Segment Ã  traiter
 	 */
 	public void makeTreatmentReceive(Segment segment) {
 		automate.EvaluateStateRcv(segment);
@@ -121,8 +121,8 @@ public class Traitement {
 	}
 	
 	/**
-	 * Met à jour un état dans l'automate
-	 * Les états : 
+	 * Met Ã  jour un Ã©tat dans l'automate
+	 * Les Ã©tats : 
 	 * CLOSED_INIT,
 	 * LISTEN,
 	 * SYN_RCVD,
@@ -136,7 +136,7 @@ public class Traitement {
 	 * TIME_WAIT,
 	 * CLOSED
 	 * 
-	 * @param state_active Etat à activer
+	 * @param state_active Etat Ã  activer
 	 */
 	public void update_states(String state) {
 		

@@ -9,8 +9,8 @@ import javax.swing.JMenuItem;
 import common.TCPManager;
 
 /**
- * Classe définissant le top menu de l'application
- * @author Rémi TANIWAKI
+ * Classe dÃ©finissant le top menu de l'application
+ * @author RÃ©mi TANIWAKI
  *
  */
 public class TopMenu implements ActionListener {
@@ -32,7 +32,7 @@ public class TopMenu implements ActionListener {
 		menuBar.add(connexion) ;
 
 		parametre = new JMenu("Options");
-		paramsub = new JMenuItem("Paramètres");
+		paramsub = new JMenuItem("ParamÃ¨tres");
 		paramsub.addActionListener(this);
 		parametre.add(paramsub);
 		menuBar.add(parametre);

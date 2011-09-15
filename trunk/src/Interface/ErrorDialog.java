@@ -1,5 +1,5 @@
 /**
- * Creation de fenêtre de Warning
+ * Creation de fenÃªtre de Warning
  */
 package Interface;
 
@@ -55,7 +55,7 @@ public class ErrorDialog extends JDialog implements ActionListener {
 	}
 	
 	/**
-	 * Gestion des actions liées aux boutons
+	 * Gestion des actions liÃ©es aux boutons
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Bok) {

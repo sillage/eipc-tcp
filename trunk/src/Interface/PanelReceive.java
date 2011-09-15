@@ -14,8 +14,8 @@ import myLib.BoundedTextField;
 import java.awt.event.ActionListener;
 
 /**
- * Classe pour le panneau de réception de l'interface de l'application.
- * @author Rémi TANIWAKI
+ * Classe pour le panneau de rÃ©ception de l'interface de l'application.
+ * @author RÃ©mi TANIWAKI
  *
  */
 @SuppressWarnings("serial")
@@ -33,10 +33,10 @@ public class PanelReceive extends JPanel implements ActionListener {
 		setLayout(null);
 		setPreferredSize(new Dimension(300, 300));
 		setBounds(675, 5, 305, 300);
-	    setBorder(new TitledBorder("Datagramme en Réception"));
+	    setBorder(new TitledBorder("Datagramme en RÃ©ception"));
 	    
-    	// Numéro de séquence
-        RecepLabNum = new JLabel("Numéro de séquence (32bits)");
+    	// NumÃ©ro de sÃ©quence
+        RecepLabNum = new JLabel("NumÃ©ro de sÃ©quence (32bits)");
         RecepLabNum.setFont(new Font("arial", 0, 12));
         RecepNum = new BoundedTextField("", 32);
         RecepLabNum.setBounds(10, 15, 180, 20);
@@ -44,8 +44,8 @@ public class PanelReceive extends JPanel implements ActionListener {
         add(RecepLabNum);
         add(RecepNum);
         
-        // Numéro d'acquitement
-        RecepLabAqu = new JLabel("Numéro d'acquittement (32bits)");
+        // NumÃ©ro d'acquitement
+        RecepLabAqu = new JLabel("NumÃ©ro d'acquittement (32bits)");
         RecepLabAqu.setFont(new Font("arial", 0, 12));
         RecepAqu = new BoundedTextField("", 32);
         RecepLabAqu.setBounds(10, 55, 180, 20);
@@ -104,8 +104,8 @@ public class PanelReceive extends JPanel implements ActionListener {
         add(RecepFIN);
         //RecepFIN.addActionListener(this);
 
-        // Fenêtre
-        RecepLabFen = new JLabel("Fenêtre (16bits)");
+        // FenÃªtre
+        RecepLabFen = new JLabel("FenÃªtre (16bits)");
         RecepLabFen.setFont(new Font("arial", 0, 12));
         RecepFen = new BoundedTextField("", 16);
         RecepLabFen.setBounds(10, 135, 285, 20);
@@ -134,7 +134,7 @@ public class PanelReceive extends JPanel implements ActionListener {
         //RecepPtr.addActionListener(this);
         
         // Data
-        RecepLabData = new JLabel("Données");
+        RecepLabData = new JLabel("DonnÃ©es");
         RecepLabData.setFont(new Font("arial", 0, 12));
         RecepData = new BoundedTextField("", 100);
         RecepLabData.setBounds(10, 215, 285, 20);
@@ -155,7 +155,7 @@ public class PanelReceive extends JPanel implements ActionListener {
 		gui = GUIManager.getInstance();
 		
 		if (action.getSource() == CheckBtn) {
-			// HERE§
+			// HEREÂ§
 			if (segment != null) {
 				if (segment.get_checksum() == segment.get_checksum(segment)) {
 					gui.getPanelConsole().insertLine("CRC is correct", "Green");

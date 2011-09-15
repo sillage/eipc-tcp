@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 /**
- * Classe servant à afficher un chronomètre
- * @author Rémi TANIWAKI
+ * Classe servant Ã  afficher un chronomÃ¨tre
+ * @author RÃ©mi TANIWAKI
  *
  */
 @SuppressWarnings("serial")

@@ -18,13 +18,13 @@ public class TcpClient implements Runnable{
 	private String name;
 	// Adresse IP du serveur
 	private String ipServ;
-	// Port d'écoute du serveur
+	// Port d'Ã©coute du serveur
 	private int portServ;
 	// Socket entre le serveur et le client
 	private static Socket sock;
-	// Flux d'écriture depuis le serveur
+	// Flux d'Ã©criture depuis le serveur
 	private BufferedReader fromServ;
-	// Flux d'écriture vers le serveur 
+	// Flux d'Ã©criture vers le serveur 
 	private PrintStream toServ;
 	// Interaction GUI
 	private GUIManager gui;
@@ -32,8 +32,8 @@ public class TcpClient implements Runnable{
 	public Traitement traitement;
 	/**
 	 * Constructeur
-	 * @param hostname, adresse IP du serveur à contacter
-	 * @param port, port d'écoute du serveur à contacter
+	 * @param hostname, adresse IP du serveur Ã  contacter
+	 * @param port, port d'Ã©coute du serveur Ã  contacter
 	 * @param name, nom du client
 	 */
 	public TcpClient (String hostname, int port, String name) {
@@ -120,7 +120,7 @@ public class TcpClient implements Runnable{
 
 	/**
 	 * Envoie un message au serveur
-	 * @param msg, message à envoyer
+	 * @param msg, message Ã  envoyer
 	 */
 	public void sendMsg (String msg){
 			try{
@@ -149,7 +149,7 @@ public class TcpClient implements Runnable{
 	}
 	
 	/**
-	 * Déconnexion du client
+	 * DÃ©connexion du client
 	 *
 	 */
 	public void disconnect() {

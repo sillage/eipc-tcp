@@ -15,8 +15,8 @@ import common.*;
 import myLib.BoundedTextField;
 
 /**
- * Classe pour la création du JDialog de l'ouverture de connexion
- * @author Rémi TANIWAKI
+ * Classe pour la crÃ©ation du JDialog de l'ouverture de connexion
+ * @author RÃ©mi TANIWAKI
  *
  */
 @SuppressWarnings("serial")
@@ -114,7 +114,7 @@ public class ConnectionDialog extends JDialog implements ActionListener, ItemLis
 	}
 
 	/**
-	 * Gestion des actions liées aux boutons
+	 * Gestion des actions liÃ©es aux boutons
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Bok) {
@@ -141,7 +141,7 @@ public class ConnectionDialog extends JDialog implements ActionListener, ItemLis
 	}
 
 	/**
-	 * Gestion des actions liées au changement de type
+	 * Gestion des actions liÃ©es au changement de type
 	 */
 	public void itemStateChanged(ItemEvent item) {
 		// action pour la ckeckbox step_by_step

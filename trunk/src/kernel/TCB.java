@@ -7,7 +7,7 @@ import common.Segment;
 
 public class TCB {
 
-	private long	_sndUNA			= -1; // "unacknowledge" - envoie sans accusé de reception
+	private long	_sndUNA			= -1; // "unacknowledge" - envoie sans accusÃ© de reception
 	private long	_sndNXT			= -1; // "next" - envoie du suivant
 	private long	_sndUP			= 0; // "urgent pointer" - pointeur de donnees urgentes
 	private long	_ISS			= -1; // "initial send sequence" - premier numero de sequence du message
@@ -43,12 +43,12 @@ public class TCB {
 	private Segment Segment_courant;
 	
 	/**
-	 * Le buffer utilisé pour la réception
+	 * Le buffer utilisÃ© pour la rÃ©ception
 	 */
 	private byte[]	_rcvBuffer;
 	
 	/**
-	 * Le buffer utilisé pour l'emission
+	 * Le buffer utilisÃ© pour l'emission
 	 */
 	private byte[] _sndBuffer;
 	
@@ -374,7 +374,7 @@ public class TCB {
 	}*/
 	
 	/**
-	 * Initialisation du buffer de réception
+	 * Initialisation du buffer de rÃ©ception
 	 */
 	/*
 	private void Initialisation_rcvBuffer() {
@@ -394,8 +394,8 @@ public class TCB {
 	*/
 	
 	/**
-	 * Calcule l'espace libre du buffer de réception en octet
-	 * @return l'espace libre du buffer de réception
+	 * Calcule l'espace libre du buffer de rÃ©ception en octet
+	 * @return l'espace libre du buffer de rÃ©ception
 	 */
 	public long Combien_Espace_Libre_Rcv() {
 		return (getBuffer_lg() - get_IRS()) * get_rcvWND();
@@ -410,7 +410,7 @@ public class TCB {
 	}
 	
 	/**
-	 * Indique si le buffer de réception est plein
+	 * Indique si le buffer de rÃ©ception est plein
 	 * @return un booleen
 	 */
 	public boolean isBufferRcvPlein() {
@@ -426,7 +426,7 @@ public class TCB {
 	}
 	
 	/**
-	 * Procedure qui remplit le buffer de réception des données reçues dans les segments
+	 * Procedure qui remplit le buffer de rÃ©ception des donnÃ©es reÃ§ues dans les segments
 	 */
 	public void Remplir_Buffer_Rcv(Segment seg) {
 		int i;
@@ -441,7 +441,7 @@ public class TCB {
 	}
 	
 	/**
-	 * Procedure qui remplit le buffer d'emission des données reçues dans les segments
+	 * Procedure qui remplit le buffer d'emission des donnÃ©es reÃ§ues dans les segments
 	 */
 	public void Remplir_Buffer_Snd(Segment seg) {
 		int i;
@@ -497,13 +497,13 @@ public class TCB {
 	
 	
 /**
- * Met à jour les flags du segment en paramètre avant de passer par l'automate 
+ * Met Ã  jour les flags du segment en paramÃ¨tre avant de passer par l'automate 
  * @param SegIn
  * @return 
  */	
 	public Segment updateSegment(Segment SegIn) {
 
-		//retourne un segment updaté (SegOut par exemple) 
+		//retourne un segment updatÃ© (SegOut par exemple) 
 		return SegIn;
 	}
 	
@@ -512,10 +512,10 @@ public class TCB {
 	}
 	
 	/**
-	 * Calcul la fenêtre
-	 * @params t represente le TCB courant et a le choix de l'agorithme de gestion de la fenêtre
+	 * Calcul la fenÃªtre
+	 * @params t represente le TCB courant et a le choix de l'agorithme de gestion de la fenÃªtre
 	 * 
-	 * @return la fenêtre
+	 * @return la fenÃªtre
 	 */
 	public long calcWindow(TCB t, algorithme_windows a) {
 		long res = 0;

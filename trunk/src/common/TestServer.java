@@ -13,7 +13,7 @@ public class TestServer{
 			t.sleep(100);
 			t2.sleep(100);
 		}catch(Exception e){
-			System.err.println("Problème Thread " + e.getMessage());
+			System.err.println("ProblÃ¨me Thread " + e.getMessage());
 		}
 		cli.sendMsg("10101100000");
 		serv.sendMsg("toto");

@@ -19,8 +19,8 @@ import javax.swing.text.Style;
 import javax.swing.text.StyledDocument;
 
 /**
- * Classe de création du panneau console.
- * @author Rémi TANIWAKI
+ * Classe de crÃ©ation du panneau console.
+ * @author RÃ©mi TANIWAKI
  *
  */
 @SuppressWarnings("serial")
@@ -35,12 +35,12 @@ public class PanelConsole extends JPanel implements ActionListener {
 	 * Constructeur
 	 */
 	public PanelConsole() {
-		// propriété du panel
+		// propriÃ©tÃ© du panel
 		setLayout(null);
 		setBounds(675, 305, 305, 295);
 	    setBorder(new TitledBorder("Console"));
 	    
-	    // création de la console texte
+	    // crÃ©ation de la console texte
 	    textPane = new JTextPane();
 	    doc = textPane.getStyledDocument();
         scrollPane = new JScrollPane(textPane);
@@ -156,7 +156,7 @@ public class PanelConsole extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * Génere le prompt avec l'heure
+	 * GÃ©nere le prompt avec l'heure
 	 */
 	private void insertPrompt() {
 		try {
@@ -174,8 +174,8 @@ public class PanelConsole extends JPanel implements ActionListener {
 	
 	/**
 	 * Insert une ligne dans la console
-	 * @param str La chaîne de caractère à écrire
-	 * @param style Le style à utiliser
+	 * @param str La chaÃ®ne de caractÃ¨re Ã  Ã©crire
+	 * @param style Le style Ã  utiliser
 	 */
 	public void insertLine(String str, String style) {
 		try {

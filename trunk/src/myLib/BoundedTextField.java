@@ -9,8 +9,8 @@ import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 
 /**
- * Un classe pour définir un champ texte où l'on controle le maximum de caractères.
- * @author Rémi TANIWAKI
+ * Un classe pour dÃ©finir un champ texte oÃ¹ l'on controle le maximum de caractÃ¨res.
+ * @author RÃ©mi TANIWAKI
  *
  */
 @SuppressWarnings("serial")
