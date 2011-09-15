@@ -14,8 +14,8 @@ public class SegmentVector extends Thread {
 	//Traitement	traitement = Traitement.getInstance();
 	GUIManager	gui = GUIManager.getInstance();
 	TCPManager	tcp = TCPManager.getInstance();
-	long 						_srtt = 60000; // Smoothed Round Trip Time (initialiser à 1 min normalement...)
-	private long				_rto = 30000; //Retransmission Time Out (initialisé à 10secondes ici), Attention toujours passer par les methodes Get
+	long 						_srtt = 60000; // Smoothed Round Trip Time (initialiser Ã  1 min normalement...)
+	private long				_rto = 30000; //Retransmission Time Out (initialisÃ© Ã  10secondes ici), Attention toujours passer par les methodes Get
 	private Vector<Pair>		_rsdStack = new Vector<Pair>();
 	private TCB	_tcb;
 	
@@ -45,7 +45,7 @@ public class SegmentVector extends Thread {
 			}
 		}
 		_rsdStack.addElement(new Pair(segment));
-		//On décrémente la taille de la fenêtre de réception de ce k'on a envoyé
+		//On dÃ©crÃ©mente la taille de la fenÃªtre de rÃ©ception de ce k'on a envoyÃ©
 		_tcb.set_sndWND(_tcb.get_sndWND() - segment.get_data().length);
 		// System.out.println("Nouvelle taille de la stack : " + _rsdStack.size());
 		this.printAddededSegment(segment);
@@ -54,10 +54,10 @@ public class SegmentVector extends Thread {
 	}
 	
 	/**
-	 * Retire du vecteur les segments acquités :
-	 * Un segment est effacé si la somme de son numéro de séquence (1er octet de donnée) et sa longueur
-	 * est inférieure au numéro de séquence du dernier accusé de réception 
-	 * @param TCP_segement segment : le segment recu contenant un accusé de reception
+	 * Retire du vecteur les segments acquitÃ©s :
+	 * Un segment est effacÃ© si la somme de son numÃ©ro de sÃ©quence (1er octet de donnÃ©e) et sa longueur
+	 * est infÃ©rieure au numÃ©ro de sÃ©quence du dernier accusÃ© de rÃ©ception 
+	 * @param TCP_segement segment : le segment recu contenant un accusÃ© de reception
 	 * @return
 	 */
 	public synchronized boolean deleteSegment(Segment segment) {
@@ -104,7 +104,7 @@ public class SegmentVector extends Thread {
 		_rsdStack.removeElementAt(j);
 	}
 	
-	// calcul dynamique du temps de retransmission selon l'algorithme proposé par la RFC 793 de TCP
+	// calcul dynamique du temps de retransmission selon l'algorithme proposÃ© par la RFC 793 de TCP
 	private void calRto(long date) {
 		Date now = new Date();
 		long rtt = 0; //Round Trip Time
@@ -152,9 +152,9 @@ public class SegmentVector extends Thread {
 			gui.getPanelConsole().insertLine("Segment retransmited", "Red");
 	}
 	
-	// cette fonction re-emet les paquets qui sont restés trop longtemps dans la pile de retransmission
-	// Elle parcours le vecteur de paquet emis pour re-emttre ceux dont l'accusé de reception
-	// n'a pas été recu depuis un temps stocké dans _rto
+	// cette fonction re-emet les paquets qui sont restÃ©s trop longtemps dans la pile de retransmission
+	// Elle parcours le vecteur de paquet emis pour re-emttre ceux dont l'accusÃ© de reception
+	// n'a pas Ã©tÃ© recu depuis un temps stockÃ© dans _rto
 	// TODO ajuster le temps pendant lequel on attend avant de re-emettre 
 	private synchronized void reSendSegment() throws IOException, InterruptedException {
 		Date now = new Date();
@@ -165,14 +165,14 @@ public class SegmentVector extends Thread {
 			p = (Pair) _rsdStack.get(i);
 			if (now.getTime() - p.getCreationDate().getTime() > this._rto) {
 				p.setCreationDate(now);
-				// Réenvoi du segment (copié collé)
+				// RÃ©envoi du segment (copiÃ© collÃ©)
 				if (tcp.getisClient()) {
 					tcp.getClient().sendMsg(p.getSegment().dump());
 				}
 				if (tcp.getisServer()) {
 					tcp.getServeur().sendMsg(p.getSegment().dump());
 				}
-				// Fin réenvoi du segment
+				// Fin rÃ©envoi du segment
 				this.printRetransmitedSegment(p.getSegment());
 			}
 		}

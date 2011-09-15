@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 /**
  * Classe qui charge une image dans un ImageIcon
- * @author Rémi TANIWAKI
+ * @author RÃ©mi TANIWAKI
  *
  */
 public class ImageSet {
@@ -36,7 +36,7 @@ public class ImageSet {
 	
 	/**
 	 * ImageIcon setter
-	 * @param i une varible de type ImageIcon à intégrer dans l'objet
+	 * @param i une varible de type ImageIcon Ã  intÃ©grer dans l'objet
 	 */
 	public void setImage(ImageIcon i) {
 		_image = i;

@@ -30,7 +30,7 @@ public class Segment {
 
 
 	/**
-	 * Permet de créer un segment a partir d'un dump binaire du segment;
+	 * Permet de crÃ©er un segment a partir d'un dump binaire du segment;
 	 * @param b le dump binaire du segment
 	 */
 	public Segment(byte[] b)
@@ -784,10 +784,10 @@ public class Segment {
 	
 	/**
 	 * 
-	 * Cette méthode compare le checksum du segment avec 
+	 * Cette mÃ©thode compare le checksum du segment avec 
 	 * le checksum calculer sur ce segment
 	 * 
-	 * @param seg le segment à verifier
+	 * @param seg le segment Ã  verifier
 	 * @return
 	 */
 	public boolean verif_checksum(Segment seg)
@@ -903,8 +903,8 @@ public class Segment {
 		System.out.println("-------------------------------------  ");
 		System.out.println("Port Source      : " + this.get_port_source());
 		System.out.println("Port Destination : " + this.get_port_dest());
-		System.out.println("Numéro de Seq    : " + this.get_seq_number());
-		System.out.println("Numéro de Acq    : " + this.get_ack_number());
+		System.out.println("NumÃ©ro de Seq    : " + this.get_seq_number());
+		System.out.println("NumÃ©ro de Acq    : " + this.get_ack_number());
 		System.out.println("Offset           : " + this.get_offset());
 		System.out.println("Window           : " + this.get_window());
 		System.out.println("Checksum         : " + this.get_checksum());

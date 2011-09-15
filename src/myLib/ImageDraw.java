@@ -7,7 +7,7 @@ import myLib.ImageSet;
 		
 /**
  * Classe qui cree un label pour dessiner une image.
- * @author Rémi TANIWAKI
+ * @author RÃ©mi TANIWAKI
  *
  */
 public class ImageDraw {

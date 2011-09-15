@@ -8,13 +8,13 @@ public class TCPManager {
 	private TcpServer serveur;
 	
 	/**
-	 * Constructeur par défaut
+	 * Constructeur par dÃ©faut
 	 */
 	private TCPManager() {
 	}
 
 	/**
-	 * Créé l'instance TCPManager si elle n'existe pas déja 
+	 * CrÃ©Ã© l'instance TCPManager si elle n'existe pas dÃ©ja 
 	 * ou retourne un pointeur sur l'instance si elle existe.
 	 * @return l'intance TCPManager
 	 */

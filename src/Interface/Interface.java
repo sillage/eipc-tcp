@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Classe principale pour l'interface de l'application.
- * @author Rémi TANIWAKI
+ * @author RÃ©mi TANIWAKI
  */
 @SuppressWarnings("serial")
 public class Interface extends JFrame implements ActionListener {
@@ -31,10 +31,10 @@ public class Interface extends JFrame implements ActionListener {
 	}
 
 	/**
-	 * Création de la fenêtre d'affichage.
+	 * CrÃ©ation de la fenÃªtre d'affichage.
 	 */
 	private void CreateAndShowGUI(){
-		// propriétés fenêtre principale
+		// propriÃ©tÃ©s fenÃªtre principale
 		this.setTitle("Projet TCP - TeamCP"); 
 		this.setSize(new Dimension(995, 660));
 		this.setLocationRelativeTo(null);
@@ -43,7 +43,7 @@ public class Interface extends JFrame implements ActionListener {
 		//this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
 		//this.setMinimumSize(new Dimension(995, 605));
 		
-		// pas de layout prédéfini
+		// pas de layout prÃ©dÃ©fini
 		this.getContentPane().setLayout(null);
 		
 		// ajout du top menu
@@ -78,7 +78,7 @@ public class Interface extends JFrame implements ActionListener {
 		foot_banner = new ImageDraw("../Interface/Img/footban.jpg", 320, 577, 345, 21);
 		this.getContentPane().add(foot_banner.getPicture());
 		
-		// création du singleton pour manager les panels entres eux
+		// crÃ©ation du singleton pour manager les panels entres eux
 		gui_manager = GUIManager.getInstance();
 		gui_manager.setPanelConsole(panel_console);
 		gui_manager.setPanelSend(panel_send);

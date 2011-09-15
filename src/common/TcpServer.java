@@ -11,9 +11,9 @@ import kernel.*;
  *
  */
 public class TcpServer implements Runnable{
-	// Port d'écoute du Serveur
+	// Port d'Ã©coute du Serveur
 	public int port;
-	// Tableau des clients connectés
+	// Tableau des clients connectÃ©s
 	private static ArrayList clients;
 	// Tableau
 	private static ServerSocket sockServ;
@@ -24,7 +24,7 @@ public class TcpServer implements Runnable{
 	
 	/**
 	 * Constructeur
-	 * @param port, port d'écoute
+	 * @param port, port d'Ã©coute
 	 */
 	public TcpServer (int port) {
 		this.port = port;
@@ -61,8 +61,8 @@ public class TcpServer implements Runnable{
 	}
 	
 	/**
-	 * Envoie un Msg à tous les clients connectés
-	 * @param msg, msg à envoyer
+	 * Envoie un Msg Ã  tous les clients connectÃ©s
+	 * @param msg, msg Ã  envoyer
 	 */
 	public void sendMsg(String msg){
 		for(int i = 0; i < clients.size(); i++)

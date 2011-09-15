@@ -2,8 +2,8 @@ package Interface;
 
 /**
  * Classe en design pattern Singleton pour la gestion des JPanels 
- * utilisée pour le dialogue entre les JPanels.
- * @author Rémi TANIWAKI
+ * utilisÃ©e pour le dialogue entre les JPanels.
+ * @author RÃ©mi TANIWAKI
  *
  */
 public class GUIManager {
@@ -16,7 +16,7 @@ public class GUIManager {
 	PanelConsole panel_console;
 
 	/**
-	 * Créé l'instance GUIManager si elle n'existe pas déja 
+	 * CrÃ©Ã© l'instance GUIManager si elle n'existe pas dÃ©ja 
 	 * ou retourne un pointeur sur l'instance si elle existe.
 	 * @return l'intance GUIManager
 	 */
@@ -124,7 +124,7 @@ public class GUIManager {
 	}
 	
 	/**
-	 * Constructeur par défaut
+	 * Constructeur par dÃ©faut
 	 */
 	private GUIManager() {
 	}

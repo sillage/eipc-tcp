@@ -10,7 +10,7 @@ import java.net.Socket;
 
 /**
  * L'automate met a jour les differents champs du TCB en fonction des trames recus
- * Il analyse lui meme les segments dÈcodÈs et dÈcide de l'Ètat suivant.
+ * Il analyse lui meme les segments d√©cod√©s et d√©cide de l'√©tat suivant.
  * 
  * @author Vivi
  *
@@ -230,7 +230,7 @@ public class Automaton {
 				}
 				if (type == CLIENT) {
 					tcb.initSegmentVector();
-					tcb.set_ISS(Math.round(Math.random()* Math.pow(2, 6)) & 0x00000000FFFFFFFF); //Initialise le numÈro de sÈquence (random)
+					tcb.set_ISS(Math.round(Math.random()* Math.pow(2, 6)) & 0x00000000FFFFFFFF); //Initialise le num√©ro de s√©quence (random)
 					tcb.portServer = this.getPortServ();
 					tcb.portClient = this.getPortClient();
 					tcb.type = 1;
@@ -254,7 +254,7 @@ public class Automaton {
 					set_state(LISTEN);
 				}
 				if (type == CLIENT) {
-					tcb.set_ISS(Math.round(Math.random()* Math.pow(2, 32)) & 0x00000000FFFFFFFF); //Initialise le numÈro de sÈquence (random)
+					tcb.set_ISS(Math.round(Math.random()* Math.pow(2, 32)) & 0x00000000FFFFFFFF); //Initialise le num√©ro de s√©quence (random)
 					
 					segToSend = tcb.send(false, false, false, false, true, false, "", tcb.get_ISS(), 0);
 					send = true;
@@ -271,14 +271,14 @@ public class Automaton {
 			}
 			break;
 			default:
-				System.err.println("Error: La connexion existe dÈj‡");
+				System.err.println("Error: La connexion existe d√©j√†");
 			break;
 		}
 	}
 
 	/**
-	 * Èvalue l'Ètat de l'automate lors de l'arrivÈe d'un segment
-	 * TODO mettre ‡ jour les variables d'emissions et reception
+	 * √©value l'√©tat de l'automate lors de l'arriv√©e d'un segment
+	 * TODO mettre √† jour les variables d'emissions et reception
 	 * 
 	 */
 	public void EvaluateStateRcv(Segment seg) {
@@ -299,7 +299,7 @@ public class Automaton {
 					tcb.type = 0;
 					tcb.set_rcvNXT(calcSeq(seg.get_seq_number()));
 					tcb.set_IRS(seg.get_seq_number());
-					tcb.set_ISS(Math.round(Math.random()* Math.pow(2, 6)) & 0x00000000FFFFFFFF); //Initialise le numÈro de sÈquence (random)
+					tcb.set_ISS(Math.round(Math.random()* Math.pow(2, 6)) & 0x00000000FFFFFFFF); //Initialise le num√©ro de s√©quence (random)
 					segToSend = tcb.send(false, true, false, false, true, false, "", tcb.get_ISS(), tcb.get_rcvNXT());
 					send = true;
 					goGoSend(0);
@@ -324,7 +324,7 @@ public class Automaton {
 						segToSend = tcb.send(false, false, false, true, false, false, "", seg.get_ack_number(), 0);
 						send = true;
 						goGoSend(0);
-						gui.getPanelConsole().insertLine("Acquittement nÈgatif", "Red");
+						gui.getPanelConsole().insertLine("Acquittement n√©gatif", "Red");
 					}
 					// Acquittement positif
 					if (tcb.get_sndUNA() <= seg.get_ack_number() && seg.get_ack_number() <= tcb.get_sndNXT()) {
@@ -336,7 +336,7 @@ public class Automaton {
 							if (seg.get_ACK())
 							{
 								tcb.set_sndUNA(seg.get_ack_number());
-								//FIXME supprimer les segments qui ont ete acquitÈ de la pile de retransmission
+								//FIXME supprimer les segments qui ont ete acquit√© de la pile de retransmission
 								if (tcb.get_sndUNA() > tcb.get_ISS()) {
 									if (this.stepbystep == false)
 										set_state(ESTAB);
@@ -375,9 +375,9 @@ public class Automaton {
 					}
 				}
 				if (seg.get_seq_number() >= tcb.get_rcvNXT()) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (tcp.getisServer()) {
 							tcp.getServeur().retirerAllClient();
 							if (this.stepbystep == false)
@@ -398,7 +398,7 @@ public class Automaton {
 				}
 				break;
 			case(ESTAB): //RECEPTION DE DONNEES DE L'APPLICATION
-				//Traitement du numÈro de sÈquence (FENETRE NON GEREE) /!\
+				//Traitement du num√©ro de s√©quence (FENETRE NON GEREE) /!\
 				//gui.getPanelConsole().insertLine("RCVNXT:" + tcb.get_rcvNXT() + ": SEQ: "+ seg.get_seq_number(), "Green");
 				if (seg.get_FIN() == true) {
 					if (this.stepbystep == false)
@@ -406,7 +406,7 @@ public class Automaton {
 					else {
 						this.stateToSet = CLOSE_WAIT;
 					}
-					// RÈcupÈration des donnÈes
+					// R√©cup√©ration des donn√©es
 					tcb.set_rcvNXT(seg.get_seq_number());//NEXT.
 					//tcb.set_sndNXT(this.calcSeq(seg.get_ack_number())); //NEXT.
 					if (this.autoAck) {
@@ -416,9 +416,9 @@ public class Automaton {
 					}
 				}else
 				if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (this.stepbystep == false)
 							set_state(CLOSED);
 						else
@@ -440,7 +440,7 @@ public class Automaton {
 						} else {
 							
 						 {
-								// RÈcupÈration des donnÈes
+								// R√©cup√©ration des donn√©es
 								tcb.set_rcvNXT(seg.get_seq_number());//NEXT.
 								//tcb.set_sndNXT(this.calcSeq(seg.get_ack_number())); //NEXT.
 								if (this.autoAck) {
@@ -470,9 +470,9 @@ public class Automaton {
 				break;
 			case(FIN_WAIT_1):
 				//if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (this.stepbystep == false)
 							set_state(CLOSED);
 						else
@@ -488,7 +488,7 @@ public class Automaton {
 							tcb.set_sndNXT(seg.get_ack_number());//NEXT. (pas modif)
 						}
 					} else {
-						// RÈcupÈration des donnÈes
+						// R√©cup√©ration des donn√©es
 						tcb.set_rcvNXT(seg.get_seq_number());//NEXT.
 						//tcb.set_sndNXT(this.calcSeq(seg.get_ack_number())); //NEXT.
 						if (this.autoAck) {
@@ -537,9 +537,9 @@ public class Automaton {
 				break;*/
 			case(CLOSE_WAIT):
 				if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (this.stepbystep == false)
 							set_state(CLOSED);
 						else
@@ -560,9 +560,9 @@ public class Automaton {
 			case(FIN_WAIT_2):
 				hidden = false;
 				if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (this.stepbystep == false)
 							set_state(CLOSED);
 						else
@@ -593,9 +593,9 @@ public class Automaton {
 				break;*/
 			case(CLOSING):
 				if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (this.stepbystep == false)
 							set_state(CLOSED);
 						else
@@ -632,9 +632,9 @@ public class Automaton {
 				break;*/
 			case(LAST_ACK):
 				if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (this.stepbystep == false)
 							set_state(CLOSED);
 						else
@@ -658,9 +658,9 @@ public class Automaton {
 			case(TIME_WAIT):
 				hidden = true;
 				if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
-					//NumÈro acceptable
+					//Num√©ro acceptable
 					if (seg.get_RST() == true) {
-						//Abandonner la session - Idem pour Ètats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
+						//Abandonner la session - Idem pour √©tats FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
 						if (this.stepbystep == false)
 							set_state(CLOSED);
 						else
@@ -693,8 +693,8 @@ public class Automaton {
 	}
 	
 /**
- * Cette fonction Èvalue l'Ètat de l'automate lors de l'envoie d'un segment
- * @param seg : Segment ‡ envoyer
+ * Cette fonction √©value l'√©tat de l'automate lors de l'envoie d'un segment
+ * @param seg : Segment √† envoyer
  */
 	public void evaluateStateSend(Segment seg) {
 		switch (state) {
@@ -809,7 +809,7 @@ public class Automaton {
 	}	}
 	
 	/**
-	 * @return le numÈro de sÈquence du prochain segment
+	 * @return le num√©ro de s√©quence du prochain segment
 	 */
 	private long calcSeq(long oldSeq) {
 		long max = 4294967296L;
@@ -822,8 +822,8 @@ public class Automaton {
 	}
 	
 	/**
-	 * Calcul le numÈro d'acquittement par rapport au segment reÁu
-	 * @param segment = Segment reÁu
+	 * Calcul le num√©ro d'acquittement par rapport au segment re√ßu
+	 * @param segment = Segment re√ßu
 	 * @return
 	 */
 	public long calcAck(Segment segment) {

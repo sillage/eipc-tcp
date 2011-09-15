@@ -15,8 +15,8 @@ import myLib.BoundedTextField;
 import Interface.ErrorDialog;
 
 /**
- * Classe pour la fenetre de paramètrage (option)
- * @author Rémi TANIWAKI
+ * Classe pour la fenetre de paramÃ¨trage (option)
+ * @author RÃ©mi TANIWAKI
  *
  */
 @SuppressWarnings("serial")
@@ -33,7 +33,7 @@ public class ParametersDialog extends JDialog implements ActionListener {
 	 * @param bufferrecep taille du buffer de reception
 	 */
 	public ParametersDialog(int bufferenvoi, int bufferrecep) {
-		setTitle("Paramètres de connexion");
+		setTitle("ParamÃ¨tres de connexion");
 		setSize(260,150);
 		setResizable(false);
 		this.setLocationRelativeTo(null);
@@ -51,7 +51,7 @@ public class ParametersDialog extends JDialog implements ActionListener {
         BufferEnvoiLab.setBounds(20, 28, 130, 20);
         BufferEnvoiLab.setFont(new Font("arial", 0, 12));
         dialogPanel.add(BufferEnvoiLab);
-        JLabel BufferRecepLab = new JLabel("Buffer Réception");
+        JLabel BufferRecepLab = new JLabel("Buffer RÃ©ception");
 		BufferRecepLab.setBounds(20, 53, 130, 20);
 		BufferRecepLab.setFont(new Font("arial", 0, 12));
         dialogPanel.add(BufferRecepLab);
@@ -86,9 +86,9 @@ public class ParametersDialog extends JDialog implements ActionListener {
 	}
 
 	/**
-	 * Filtre les champs concernant les paramètres des buffers
-	 * @param s la String à filtrer
-	 * @return un boolean qui indique si les données sont correctes
+	 * Filtre les champs concernant les paramÃ¨tres des buffers
+	 * @param s la String Ã  filtrer
+	 * @return un boolean qui indique si les donnÃ©es sont correctes
 	 */
 	private boolean filtre_param(String s) {
 		if (s.matches("[0-9]+")) {
@@ -96,18 +96,18 @@ public class ParametersDialog extends JDialog implements ActionListener {
 				return true;
 			}
 			else {
-				new ErrorDialog("L'entier que vous avez entré dans la zone de saisie est supérieur à 2^16 - 1 !");
+				new ErrorDialog("L'entier que vous avez entrÃ© dans la zone de saisie est supÃ©rieur Ã  2^16 - 1 !");
 				return false;
 			}
 		}}
 		else {
-			new ErrorDialog("Vous n'avez pas entré un entier positif et inferieur à 2^16 - 1");
+			new ErrorDialog("Vous n'avez pas entrÃ© un entier positif et inferieur Ã  2^16 - 1");
 			return false;
 		}
 	}
 	
 	/**
-	 * Gestion des actions liées aux boutons
+	 * Gestion des actions liÃ©es aux boutons
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Bok) {

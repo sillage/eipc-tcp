@@ -11,16 +11,16 @@ import java.io.InputStreamReader;
 import Interface.GUIManager;
 import kernel.*;
 /**
- * Class gérant la conversation entre le serveur et un client
+ * Class gÃ©rant la conversation entre le serveur et un client
  * @author Bertrand
  *
  */
 class ServeurDialogue implements Runnable {
 	// Socket client
 	Socket sock;
-	// Flux d'écriture depuis le client
+	// Flux d'Ã©criture depuis le client
 	BufferedReader fromCLi;
-	// Flux d'écriture vers le client
+	// Flux d'Ã©criture vers le client
 	PrintStream toCli;
 	// Interaction GUI
 	GUIManager gui = GUIManager.getInstance();
@@ -115,8 +115,8 @@ class ServeurDialogue implements Runnable {
 	}
 
 	/**
-	 * Traite les flux reçus
-	 * @param recu, msg reçu 
+	 * Traite les flux reÃ§us
+	 * @param recu, msg reÃ§u 
 	 */
 	public void traitementReception(String recu){
 		
@@ -124,7 +124,7 @@ class ServeurDialogue implements Runnable {
 
 	/**
 	 * Envoie un message au client
-	 * @param msg, message à envoyer
+	 * @param msg, message Ã  envoyer
 	 */
 	public void envoyer(String msg) {
 		if (traitement.getStateAutomate() != 0 && traitement.getStateAutomate() != 10)
@@ -133,7 +133,7 @@ class ServeurDialogue implements Runnable {
 	}
 
 	/**
-	 * Déconnecte le client
+	 * DÃ©connecte le client
 	 *
 	 */
 	public void stop() {
