@@ -217,6 +217,7 @@ public class PanelConsole extends JPanel implements ActionListener {
 	/**
 	 * Liste des actions du panel
 	 */
+    @Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Bclear) {
 			clearConsole();

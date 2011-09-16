@@ -84,6 +84,7 @@ public class Splash extends JWindow {
     }
     
   
+        @Override
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
       if (img == null) return;

@@ -31,6 +31,7 @@ class Clock extends JTextField {
     }
 
     private class ClockTickAction implements ActionListener {
+        @Override
         public void actionPerformed(ActionEvent e) {
         	Integer sec, min, hr, reste; 
 

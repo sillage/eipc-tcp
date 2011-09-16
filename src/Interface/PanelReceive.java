@@ -149,6 +149,7 @@ public class PanelReceive extends JPanel implements ActionListener {
 	    CheckBtn.setBounds(10, 265, 100, 20);
 	}
 
+    @Override
 	public void actionPerformed(ActionEvent action) {
 		// TODO Auto-generated method stub
 		GUIManager gui;

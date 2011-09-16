@@ -96,6 +96,7 @@ public class Interface extends JFrame implements ActionListener {
 		Splash s = new Splash(2000);
 		s.dispose(0);
 		SwingUtilities.invokeLater(new Runnable(){
+            @Override
 			public void run(){
 				Interface gui = new Interface(); 
 				gui.setVisible(true);
@@ -103,6 +104,7 @@ public class Interface extends JFrame implements ActionListener {
 		});
 	}
  
+    @Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 	}

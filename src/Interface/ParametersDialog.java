@@ -109,6 +109,7 @@ public class ParametersDialog extends JDialog implements ActionListener {
 	/**
 	 * Gestion des actions liées aux boutons
 	 */
+    @Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == Bok) {
 			// insert code action here for "OK"
