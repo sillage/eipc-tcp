@@ -178,6 +178,7 @@ public class SegmentVector extends Thread {
 		}
 	}
 
+    @Override
 	public void run() {
 		Traitement t = Traitement.getInstance();
 		
