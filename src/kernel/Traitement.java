@@ -140,29 +140,29 @@ public class Traitement {
 	 */
 	public void update_states(String state) {
 		
-		if (state == "CLOSED")
+		if ("CLOSED".equals(state))
 			automate.set_state(0);
-		if (state == "LISTEN")
+		if ("LISTEN".equals(state))
 			automate.set_state(1);
-		if (state == "SYN_RCVD")
+		if ("SYN_RCVD".equals(state))
 			automate.set_state(2);
-		if (state == "SYN_SENT")
+		if ("SYN_SENT".equals(state))
 			automate.set_state(3);
-		if (state == "ESTAB")
+		if ("ESTAB".equals(state))
 			automate.set_state(4);
-		if (state == "FIN_WAIT_1")
+		if ("FIN_WAIT_1".equals(state))
 			automate.set_state(5);
-		if (state == "CLOSE_WAIT")
+		if ("CLOSE_WAIT".equals(state))
 			automate.set_state(6);
-		if (state == "FIN_WAIT_2")
+		if ("FIN_WAIT_2".equals(state))
 			automate.set_state(7);
-		if (state == "CLOSING")
+		if ("CLOSING".equals(state))
 			automate.set_state(8);
-		if (state == "LAST_ACK")
+		if ("LAST_ACK".equals(state))
 			automate.set_state(9);
-		if (state == "TIME_WAIT")
+		if ("TIME_WAIT".equals(state))
 			automate.set_state(10);
-		if (state == "CLOSED_INIT")
+		if ("CLOSED_INIT".equals(state))
 			automate.set_state(11);
 	} 
 	

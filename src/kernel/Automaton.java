@@ -110,7 +110,7 @@ public class Automaton {
 	
 	public void goGoSend(int source) {
 		if ((this.stepbystep == true) && (source == 1)) {
-			if (stringToShow != "") {
+			if (!"".equals(stringToShow)) {
 				gui.getPanelConsole().insertLine(stringToShow, "Green");
 				stringToShow = "";
 			}
@@ -125,7 +125,7 @@ public class Automaton {
 				
 				send(segToSend);
 				send = false;
-				if (stringToShow != "") {
+				if (!"".equals(stringToShow)) {
 					gui.getPanelConsole().insertLine(stringToShow, "Green");
 					stringToShow = "";
 				}
