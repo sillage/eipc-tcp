@@ -119,6 +119,7 @@ public class PanelConnection extends JPanel implements ActionListener {
 		clock.startClock();
 	}
 	
+    @Override
 	public void actionPerformed(ActionEvent action) {
 		// TODO Auto-generated method stub
 		GUIManager gui;

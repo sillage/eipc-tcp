@@ -245,6 +245,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 	/**
 	 * Override de la méthode paintComponent pour l'update des images
 	 */
+    @Override
 	public void paintComponent(Graphics g) {
 	    Image bg;
 		super.paintComponent(g);
@@ -257,6 +258,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 	/**
 	 * Action button manager
 	 */
+    @Override
 	public void actionPerformed(ActionEvent action) {
 		/*if (action.getSource() == Bgotostate) {
 			if (! (listStates.getSelectedItem().toString().equals(""))) {
@@ -272,6 +274,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
 	/**
 	 * Action item manager
 	 */
+    @Override
 	public void itemStateChanged(ItemEvent item) {
 		// action pour la ckeckbox step_by_step
 		if (item.getSource() == Boxstepbystep) {

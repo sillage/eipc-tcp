@@ -152,6 +152,7 @@ public class PanelSend extends JPanel implements ActionListener {
 	        RemplirBtnAccept.setBounds(195, 265, 100, 20);
 	}
 
+    @Override
 	public void actionPerformed(ActionEvent e) {
 		/*if (traitement == null) {
 			traitement = Traitement.getInstance();
