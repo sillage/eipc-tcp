@@ -20,22 +20,23 @@ import java.awt.event.ActionListener;
  */
 @SuppressWarnings("serial")
 public class PanelReceive extends JPanel implements ActionListener {
-	JButton CheckBtn;
-	JCheckBox RecepURG, RecepACK, RecepPSH, RecepSYN, RecepRST, RecepFIN;
-	JLabel RecepTitle, RecepLabNum, RecepLabAqu, RecepLabOff, RecepLabFen, RecepLabChk, RecepLabPtr, RecepLabData;
-	BoundedTextField RecepNum, RecepAqu, RecepOff, RecepFen, RecepChk, RecepPtr, RecepData;
-	public common.Segment segment;  
-	
-	/**
-	 * Constructeur
-	 */ 	
-	public PanelReceive() {
-		setLayout(null);
-		setPreferredSize(new Dimension(300, 300));
-		setBounds(675, 5, 305, 300);
-	    setBorder(new TitledBorder("Datagramme en Réception"));
-	    
-    	// Numéro de séquence
+
+    JButton CheckBtn;
+    JCheckBox RecepURG, RecepACK, RecepPSH, RecepSYN, RecepRST, RecepFIN;
+    JLabel RecepTitle, RecepLabNum, RecepLabAqu, RecepLabOff, RecepLabFen, RecepLabChk, RecepLabPtr, RecepLabData;
+    BoundedTextField RecepNum, RecepAqu, RecepOff, RecepFen, RecepChk, RecepPtr, RecepData;
+    public common.Segment segment;
+
+    /**
+     * Constructeur
+     */
+    public PanelReceive() {
+        setLayout(null);
+        setPreferredSize(new Dimension(300, 300));
+        setBounds(675, 5, 305, 300);
+        setBorder(new TitledBorder("Datagramme en Réception"));
+
+        // Numéro de séquence
         RecepLabNum = new JLabel("Numéro de séquence (32bits)");
         RecepLabNum.setFont(new Font("arial", 0, 12));
         RecepNum = new BoundedTextField("", 32);
@@ -43,7 +44,7 @@ public class PanelReceive extends JPanel implements ActionListener {
         RecepNum.setBounds(10, 35, 285, 20);
         add(RecepLabNum);
         add(RecepNum);
-        
+
         // Numéro d'acquitement
         RecepLabAqu = new JLabel("Numéro d'acquittement (32bits)");
         RecepLabAqu.setFont(new Font("arial", 0, 12));
@@ -52,7 +53,7 @@ public class PanelReceive extends JPanel implements ActionListener {
         RecepAqu.setBounds(10, 75, 285, 20);
         add(RecepLabAqu);
         add(RecepAqu);
-        
+
         RecepLabOff = new JLabel("Offset (4bits)");
         RecepLabOff.setFont(new Font("arial", 0, 12));
         RecepOff = new BoundedTextField("", 4);
@@ -61,28 +62,28 @@ public class PanelReceive extends JPanel implements ActionListener {
         add(RecepLabOff);
         add(RecepOff);
         //RecepOff.addActionListener(this);
-        
+
         // URG
         RecepURG = new JCheckBox("URG");
         RecepURG.setFont(new Font("arial", 0, 12));
         RecepURG.setBounds(138, 103, 52, 20);
         add(RecepURG);
         //RecepURG.addActionListener(this);
-    
+
         // ACK
         RecepACK = new JCheckBox("ACK");
         RecepACK.setFont(new Font("arial", 0, 12));
         RecepACK.setBounds(193, 103, 52, 20);
         add(RecepACK);
         //RecepACK.addActionListener(this);
-        
+
         // PSH
         RecepPSH = new JCheckBox("PSH");
         RecepPSH.setFont(new Font("arial", 0, 12));
         RecepPSH.setBounds(248, 103, 52, 20);
         add(RecepPSH);
         //RecepPSH.addActionListener(this);
-       
+
         // RST
         RecepRST = new JCheckBox("RST");
         RecepRST.setFont(new Font("arial", 0, 12));
@@ -113,7 +114,7 @@ public class PanelReceive extends JPanel implements ActionListener {
         add(RecepLabFen);
         add(RecepFen);
         //RecepFen.addActionListener(this);
-        
+
         // Checksum
         RecepLabChk = new JLabel("Checksum (16bits)");
         RecepLabChk.setFont(new Font("arial", 0, 12));
@@ -123,7 +124,7 @@ public class PanelReceive extends JPanel implements ActionListener {
         add(RecepLabChk);
         add(RecepChk);
         //RecepChk.addActionListener(this);
-        
+
         RecepLabPtr = new JLabel("Pointeur urgent (16bits)");
         RecepLabPtr.setFont(new Font("arial", 0, 12));
         RecepPtr = new BoundedTextField("", 16);
@@ -132,7 +133,7 @@ public class PanelReceive extends JPanel implements ActionListener {
         RecepLabPtr.setBounds(155, 175, 140, 20);
         RecepPtr.setBounds(155, 195, 140, 20);
         //RecepPtr.addActionListener(this);
-        
+
         // Data
         RecepLabData = new JLabel("Données");
         RecepLabData.setFont(new Font("arial", 0, 12));
@@ -142,84 +143,84 @@ public class PanelReceive extends JPanel implements ActionListener {
         add(RecepLabData);
         add(RecepData);
         //RecepData.addActionListener(this);
-	        
-	    CheckBtn = new JButton("Check it !");
-	    CheckBtn.addActionListener(this);
-	    add(CheckBtn);
-	    CheckBtn.setBounds(10, 265, 100, 20);
-	}
+
+        CheckBtn = new JButton("Check it !");
+        CheckBtn.addActionListener(this);
+        add(CheckBtn);
+        CheckBtn.setBounds(10, 265, 100, 20);
+    }
 
     @Override
-	public void actionPerformed(ActionEvent action) {
-		// TODO Auto-generated method stub
-		GUIManager gui;
-		gui = GUIManager.getInstance();
-		
-		if (action.getSource() == CheckBtn) {
-			// HERE§
-			if (segment != null) {
-				if (segment.get_checksum() == segment.get_checksum(segment)) {
-					gui.getPanelConsole().insertLine("CRC is correct", "Green");
-				}
-				else
-					gui.getPanelConsole().insertLine("CRC is incorrect: Written="+this.RecepChk.getText()+" Expected="+segment.get_checksum(segment), "Red");
-			}
-		}
-	}
-	
-	public void setSeqNumber (String s) {
-		RecepNum.setText(s);
-	}
-	
-	public void setAckNumber (String s) {
-		RecepAqu.setText(s);
-	}
-	
-	public void setOffset (String s) {
-		RecepOff.setText(s);
-	}
-	
-	public void setFenetre (String s) {
-		RecepFen.setText(s);
-	}
-	
-	public void setChecksum (String s){
-		RecepChk.setText(s);
-	}
-	
-	public void setData (String s) {
-		RecepData.setText(s);
-	}
-	
-	public void setPointUrg (String s) {
-		RecepPtr.setText(s);
-	}
-	
-	public void setURG (boolean b) {
-		RecepURG.setSelected(b);
-	}
-	
-	public void setACK (boolean b) {
-		RecepACK.setSelected(b);
-	}
-	
-	public void setPSH (boolean b) {
-		RecepPSH.setSelected(b);
-	}
-	
-	public void setSYN (boolean b) {
-		RecepSYN.setSelected(b);
-	}
-	
-	public void setRST (boolean b) {
-		RecepRST.setSelected(b);
-	}
-	
-	public void setFIN (boolean b) {
-		RecepFIN.setSelected(b);
-	}
+    public void actionPerformed(ActionEvent action) {
+        // TODO Auto-generated method stub
+        GUIManager gui;
+        gui = GUIManager.getInstance();
 
-	public BoundedTextField getRecepData() {
-		return RecepData;
-	}
+        if (action.getSource() == CheckBtn) {
+            // HERE§
+            if (segment != null) {
+                if (segment.get_checksum() == segment.get_checksum(segment)) {
+                    gui.getPanelConsole().insertLine("CRC is correct", "Green");
+                } else {
+                    gui.getPanelConsole().insertLine("CRC is incorrect: Written=" + this.RecepChk.getText() + " Expected=" + segment.get_checksum(segment), "Red");
+                }
+            }
+        }
+    }
+
+    public void setSeqNumber(String s) {
+        RecepNum.setText(s);
+    }
+
+    public void setAckNumber(String s) {
+        RecepAqu.setText(s);
+    }
+
+    public void setOffset(String s) {
+        RecepOff.setText(s);
+    }
+
+    public void setFenetre(String s) {
+        RecepFen.setText(s);
+    }
+
+    public void setChecksum(String s) {
+        RecepChk.setText(s);
+    }
+
+    public void setData(String s) {
+        RecepData.setText(s);
+    }
+
+    public void setPointUrg(String s) {
+        RecepPtr.setText(s);
+    }
+
+    public void setURG(boolean b) {
+        RecepURG.setSelected(b);
+    }
+
+    public void setACK(boolean b) {
+        RecepACK.setSelected(b);
+    }
+
+    public void setPSH(boolean b) {
+        RecepPSH.setSelected(b);
+    }
+
+    public void setSYN(boolean b) {
+        RecepSYN.setSelected(b);
+    }
+
+    public void setRST(boolean b) {
+        RecepRST.setSelected(b);
+    }
+
+    public void setFIN(boolean b) {
+        RecepFIN.setSelected(b);
+    }
+
+    public BoundedTextField getRecepData() {
+        return RecepData;
+    }
 }

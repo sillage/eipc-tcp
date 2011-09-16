@@ -15,134 +15,135 @@ import javax.swing.text.PlainDocument;
  */
 @SuppressWarnings("serial")
 public class BoundedTextField extends JTextField implements
-    BoundedPlainDocument.InsertErrorListener {
-  public BoundedTextField() {
-    this(null, 0, 0);
-  }
+        BoundedPlainDocument.InsertErrorListener {
 
-  public BoundedTextField(String text, int columns, int maxLength) {
-    super(null, text, columns);
-
-    if (text != null && maxLength == 0) {
-      maxLength = text.length();
+    public BoundedTextField() {
+        this(null, 0, 0);
     }
-    BoundedPlainDocument plainDoc = (BoundedPlainDocument) getDocument();
-    plainDoc.setMaxLength(maxLength);
 
-    plainDoc.addInsertErrorListener(this);
-  }
+    public BoundedTextField(String text, int columns, int maxLength) {
+        super(null, text, columns);
 
-  public BoundedTextField(int columns, int maxLength) {
-    this(null, columns, maxLength);
-  }
+        if (text != null && maxLength == 0) {
+            maxLength = text.length();
+        }
+        BoundedPlainDocument plainDoc = (BoundedPlainDocument) getDocument();
+        plainDoc.setMaxLength(maxLength);
 
-  public BoundedTextField(String text, int maxLength) {
-    this(text, 0, maxLength);
-  }
+        plainDoc.addInsertErrorListener(this);
+    }
 
-  public void setMaxLength(int maxLength) {
-    ((BoundedPlainDocument) getDocument()).setMaxLength(maxLength);
-  }
+    public BoundedTextField(int columns, int maxLength) {
+        this(null, columns, maxLength);
+    }
 
-  public int getMaxLength() {
-    return ((BoundedPlainDocument) getDocument()).getMaxLength();
-  }
+    public BoundedTextField(String text, int maxLength) {
+        this(text, 0, maxLength);
+    }
 
-  // Override to handle insertion error
+    public void setMaxLength(int maxLength) {
+        ((BoundedPlainDocument) getDocument()).setMaxLength(maxLength);
+    }
+
+    public int getMaxLength() {
+        return ((BoundedPlainDocument) getDocument()).getMaxLength();
+    }
+
+    // Override to handle insertion error
     @Override
-  public void insertFailed(BoundedPlainDocument doc, int offset, String str,
-      AttributeSet a) {
-    // By default, just beep
-    Toolkit.getDefaultToolkit().beep();
-  }
+    public void insertFailed(BoundedPlainDocument doc, int offset, String str,
+            AttributeSet a) {
+        // By default, just beep
+        Toolkit.getDefaultToolkit().beep();
+    }
 
-  // Method to create default model
+    // Method to create default model
     @Override
-  protected Document createDefaultModel() {
-    return new BoundedPlainDocument();
-  }
+    protected Document createDefaultModel() {
+        return new BoundedPlainDocument();
+    }
 }
 
 @SuppressWarnings("serial")
 class BoundedPlainDocument extends PlainDocument {
-  public BoundedPlainDocument() {
-    // Default constructor - must use setMaxLength later
-    this.maxLength = 0;
-  }
 
-  public BoundedPlainDocument(int maxLength) {
-    this.maxLength = maxLength;
-  }
-
-  public BoundedPlainDocument(AbstractDocument.Content content, int maxLength) {
-    super(content);
-    if (content.length() > maxLength) {
-      throw new IllegalArgumentException(
-          "Initial content larger than maximum size");
-    }
-    this.maxLength = maxLength;
-  }
-
-  public void setMaxLength(int maxLength) {
-    if (getLength() > maxLength) {
-      throw new IllegalArgumentException(
-          "Current content larger than new maximum size");
+    public BoundedPlainDocument() {
+        // Default constructor - must use setMaxLength later
+        this.maxLength = 0;
     }
 
-    this.maxLength = maxLength;
-  }
+    public BoundedPlainDocument(int maxLength) {
+        this.maxLength = maxLength;
+    }
 
-  public int getMaxLength() {
-    return maxLength;
-  }
+    public BoundedPlainDocument(AbstractDocument.Content content, int maxLength) {
+        super(content);
+        if (content.length() > maxLength) {
+            throw new IllegalArgumentException(
+                    "Initial content larger than maximum size");
+        }
+        this.maxLength = maxLength;
+    }
+
+    public void setMaxLength(int maxLength) {
+        if (getLength() > maxLength) {
+            throw new IllegalArgumentException(
+                    "Current content larger than new maximum size");
+        }
+
+        this.maxLength = maxLength;
+    }
+
+    public int getMaxLength() {
+        return maxLength;
+    }
 
     @Override
-  public void insertString(int offset, String str, AttributeSet a)
-      throws BadLocationException {
-    if (str == null) {
-      return;
+    public void insertString(int offset, String str, AttributeSet a)
+            throws BadLocationException {
+        if (str == null) {
+            return;
+        }
+
+        // Note: be careful here - the content always has a
+        // trailing newline, which should not be counted!
+        int capacity = maxLength + 1 - getContent().length();
+        if (capacity >= str.length()) {
+            // It all fits
+            super.insertString(offset, str, a);
+        } else {
+            // It doesn't all fit. Add as much as we can.
+            if (capacity > 0) {
+                super.insertString(offset, str.substring(0, capacity), a);
+            }
+
+            // Finally, signal an error.
+            if (errorListener != null) {
+                errorListener.insertFailed(this, offset, str, a);
+            }
+        }
     }
 
-    // Note: be careful here - the content always has a
-    // trailing newline, which should not be counted!
-    int capacity = maxLength + 1 - getContent().length();
-    if (capacity >= str.length()) {
-      // It all fits
-      super.insertString(offset, str, a);
-    } else {
-      // It doesn't all fit. Add as much as we can.
-      if (capacity > 0) {
-        super.insertString(offset, str.substring(0, capacity), a);
-      }
-
-      // Finally, signal an error.
-      if (errorListener != null) {
-        errorListener.insertFailed(this, offset, str, a);
-      }
+    public void addInsertErrorListener(InsertErrorListener l) {
+        if (errorListener == null) {
+            errorListener = l;
+            return;
+        }
+        throw new IllegalArgumentException(
+                "InsertErrorListener already registered");
     }
-  }
 
-  public void addInsertErrorListener(InsertErrorListener l) {
-    if (errorListener == null) {
-      errorListener = l;
-      return;
+    public void removeInsertErrorListener(InsertErrorListener l) {
+        if (errorListener == l) {
+            errorListener = null;
+        }
     }
-    throw new IllegalArgumentException(
-        "InsertErrorListener already registered");
-  }
 
-  public void removeInsertErrorListener(InsertErrorListener l) {
-    if (errorListener == l) {
-      errorListener = null;
+    public interface InsertErrorListener {
+
+        public abstract void insertFailed(BoundedPlainDocument doc, int offset,
+                String str, AttributeSet a);
     }
-  }
-
-  public interface InsertErrorListener {
-    public abstract void insertFailed(BoundedPlainDocument doc, int offset,
-        String str, AttributeSet a);
-  }
-
-  protected InsertErrorListener errorListener; // Unicast listener
-
-  protected int maxLength;
+    protected InsertErrorListener errorListener; // Unicast listener
+    protected int maxLength;
 }
