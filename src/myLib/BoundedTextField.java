@@ -49,6 +49,7 @@ public class BoundedTextField extends JTextField implements
   }
 
   // Override to handle insertion error
+    @Override
   public void insertFailed(BoundedPlainDocument doc, int offset, String str,
       AttributeSet a) {
     // By default, just beep
@@ -56,6 +57,7 @@ public class BoundedTextField extends JTextField implements
   }
 
   // Method to create default model
+    @Override
   protected Document createDefaultModel() {
     return new BoundedPlainDocument();
   }
@@ -94,6 +96,7 @@ class BoundedPlainDocument extends PlainDocument {
     return maxLength;
   }
 
+    @Override
   public void insertString(int offset, String str, AttributeSet a)
       throws BadLocationException {
     if (str == null) {
