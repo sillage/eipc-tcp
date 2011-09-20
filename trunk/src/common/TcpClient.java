@@ -10,7 +10,7 @@ import kernel.*;
 
 /** 
  * Client TCP
- * @author Bertrand Dequivre
+ * @author Sebastien Gislais
  *
  */
 public class TcpClient implements Runnable {

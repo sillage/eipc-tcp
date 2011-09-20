@@ -5,7 +5,7 @@ import java.lang.*;
 
 /**
  * 
- * @author Samuel MEYNARD
+ * @author Sebastien Gislais
  *
  *Cette classe contient tous les attributs d'un Segment TCP
  */

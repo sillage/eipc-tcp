@@ -7,7 +7,7 @@ import kernel.*;
 
 /**
  * Class Serveur TCP
- * @author Bertrand
+ * @author Sebastien Gislais
  *
  */
 public class TcpServer implements Runnable {

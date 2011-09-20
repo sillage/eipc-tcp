@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Classe principale pour l'interface de l'application.
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais 
  */
 @SuppressWarnings("serial")
 public class Interface extends JFrame implements ActionListener {
