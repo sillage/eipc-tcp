@@ -13,7 +13,7 @@ import kernel.*;
 
 /**
  * Class gérant la conversation entre le serveur et un client
- * @author Bertrand
+ * @author Sebastien Gislais
  *
  */
 class ServeurDialogue implements Runnable {

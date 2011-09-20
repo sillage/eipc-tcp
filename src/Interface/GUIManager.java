@@ -3,7 +3,7 @@ package Interface;
 /**
  * Classe en design pattern Singleton pour la gestion des JPanels 
  * utilisée pour le dialogue entre les JPanels.
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 public class GUIManager {

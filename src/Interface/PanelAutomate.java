@@ -23,7 +23,7 @@ import kernel.Traitement;
 
 /**
  * Classe définissant le panneau automate
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 @SuppressWarnings("serial")

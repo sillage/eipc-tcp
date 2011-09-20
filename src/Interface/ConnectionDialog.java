@@ -16,7 +16,7 @@ import myLib.BoundedTextField;
 
 /**
  * Classe pour la création du JDialog de l'ouverture de connexion
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 @SuppressWarnings("serial")

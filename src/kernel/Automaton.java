@@ -11,7 +11,7 @@ import java.net.Socket;
  * L'automate met a jour les differents champs du TCB en fonction des trames recus
  * Il analyse lui meme les segments décodés et décide de l'état suivant.
  * 
- * @author Vivi
+ * @author Sebastien Gislais
  *
  */
 public class Automaton {

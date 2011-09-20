@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import myLib.BoundedTextField;
 
 /** 
- * @author Murphy
+ * @author Sebastien Gislais
  *
  */
 @SuppressWarnings("serial")

@@ -22,7 +22,7 @@ import java.nio.charset.CharsetEncoder;
 /**
  * Classe pour le panneau d'émission de l'interface de l'application.
  * 
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  * 
  */
 @SuppressWarnings("serial")

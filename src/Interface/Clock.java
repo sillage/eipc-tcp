@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 
 /**
  * Classe servant à afficher un chronomètre
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 @SuppressWarnings("serial")

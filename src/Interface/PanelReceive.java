@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 
 /**
  * Classe pour le panneau de réception de l'interface de l'application.
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 @SuppressWarnings("serial")

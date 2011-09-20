@@ -10,7 +10,7 @@ import common.TCPManager;
 
 /**
  * Classe définissant le top menu de l'application
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 public class TopMenu implements ActionListener {

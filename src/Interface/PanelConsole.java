@@ -20,7 +20,7 @@ import javax.swing.text.StyledDocument;
 
 /**
  * Classe de création du panneau console.
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 @SuppressWarnings("serial")

@@ -15,7 +15,7 @@ import Interface.ErrorDialog;
 
 /**
  * Classe pour la fenetre de paramètrage (option)
- * @author Rémi TANIWAKI
+ * @author Sebastien Gislais
  *
  */
 @SuppressWarnings("serial")
