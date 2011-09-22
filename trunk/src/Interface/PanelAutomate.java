@@ -29,7 +29,7 @@ import kernel.Traitement;
 @SuppressWarnings("serial")
 public class PanelAutomate extends JPanel implements ActionListener, ItemListener {
 
-    ImageSet panel_background = new ImageSet("../Interface/Img/automatepanelbg.jpg", null);
+    ImageIcon panel_background = new ImageIcon(getClass().getResource("Img/automatepanelbg.jpg"));
     Map<String, Map<String, ImageIcon>> map_textures = new HashMap<String, Map<String, ImageIcon>>();
     Map<String, JLabel> map_jlabels = new HashMap<String, JLabel>();
     JLabel labclosed1, lablisten, labsynrcvd, labsynsent;
@@ -99,11 +99,11 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
      */
     public Map<String, ImageIcon> loadTexture(String text1, String text2) {
         Map<String, ImageIcon> map = new HashMap<String, ImageIcon>();
-        ImageSet text_off = new ImageSet(text1, null);
-        ImageSet text_on = new ImageSet(text2, null);
+        ImageIcon text_off = new ImageIcon(getClass().getResource(text1));
+        ImageIcon text_on = new ImageIcon(getClass().getResource(text2));
 
-        map.put("OFF", text_off.getImage());
-        map.put("ON", text_on.getImage());
+        map.put("OFF", text_off);
+        map.put("ON", text_on);
         return map;
     }
 
@@ -111,18 +111,18 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
      * Charge les textures de l'automate
      */
     public void loadMapTextures() {
-        map_textures.put("CLOSED_INIT", loadTexture("../Interface/Img/autom/closed1.jpg", "../Interface/Img/autom/closed1-o.jpg"));
-        map_textures.put("LISTEN", loadTexture("../Interface/Img/autom/listen.jpg", "../Interface/Img/autom/listen-o.jpg"));
-        map_textures.put("SYN_RCVD", loadTexture("../Interface/Img/autom/synrcvd.jpg", "../Interface/Img/autom/synrcvd-o.jpg"));
-        map_textures.put("SYN_SENT", loadTexture("../Interface/Img/autom/synsent.jpg", "../Interface/Img/autom/synsent-o.jpg"));
-        map_textures.put("ESTAB", loadTexture("../Interface/Img/autom/estab.jpg", "../Interface/Img/autom/estab-o.jpg"));
-        map_textures.put("FIN_WAIT_1", loadTexture("../Interface/Img/autom/fin-wait-1.jpg", "../Interface/Img/autom/fin-wait-1-o.jpg"));
-        map_textures.put("CLOSE_WAIT", loadTexture("../Interface/Img/autom/close-wait.jpg", "../Interface/Img/autom/close-wait-o.jpg"));
-        map_textures.put("FIN_WAIT_2", loadTexture("../Interface/Img/autom/fin-wait-2.jpg", "../Interface/Img/autom/fin-wait-2-o.jpg"));
-        map_textures.put("CLOSING", loadTexture("../Interface/Img/autom/closing.jpg", "../Interface/Img/autom/closing-o.jpg"));
-        map_textures.put("LAST_ACK", loadTexture("../Interface/Img/autom/last-ack.jpg", "../Interface/Img/autom/last-ack-o.jpg"));
-        map_textures.put("TIME_WAIT", loadTexture("../Interface/Img/autom/time-wait.jpg", "../Interface/Img/autom/time-wait-o.jpg"));
-        map_textures.put("CLOSED", loadTexture("../Interface/Img/autom/closed.jpg", "../Interface/Img/autom/closed-o.jpg"));
+        map_textures.put("CLOSED_INIT", loadTexture("Img/autom/closed1.jpg", "Img/autom/closed1-o.jpg"));
+        map_textures.put("LISTEN", loadTexture("Img/autom/listen.jpg", "Img/autom/listen-o.jpg"));
+        map_textures.put("SYN_RCVD", loadTexture("Img/autom/synrcvd.jpg", "Img/autom/synrcvd-o.jpg"));
+        map_textures.put("SYN_SENT", loadTexture("Img/autom/synsent.jpg", "Img/autom/synsent-o.jpg"));
+        map_textures.put("ESTAB", loadTexture("Img/autom/estab.jpg", "Img/autom/estab-o.jpg"));
+        map_textures.put("FIN_WAIT_1", loadTexture("Img/autom/fin-wait-1.jpg", "Img/autom/fin-wait-1-o.jpg"));
+        map_textures.put("CLOSE_WAIT", loadTexture("Img/autom/close-wait.jpg", "Img/autom/close-wait-o.jpg"));
+        map_textures.put("FIN_WAIT_2", loadTexture("Img/autom/fin-wait-2.jpg", "Img/autom/fin-wait-2-o.jpg"));
+        map_textures.put("CLOSING", loadTexture("Img/autom/closing.jpg", "Img/autom/closing-o.jpg"));
+        map_textures.put("LAST_ACK", loadTexture("Img/autom/last-ack.jpg", "Img/autom/last-ack-o.jpg"));
+        map_textures.put("TIME_WAIT", loadTexture("Img/autom/time-wait.jpg", "Img/autom/time-wait-o.jpg"));
+        map_textures.put("CLOSED", loadTexture("Img/autom/closed.jpg", "Img/autom/closed-o.jpg"));
     }
 
     /**
@@ -252,7 +252,7 @@ public class PanelAutomate extends JPanel implements ActionListener, ItemListene
         if (panel_background.getImage() == null) {
             return;
         }
-        bg = panel_background.getImage().getImage();
+        bg = panel_background.getImage();
         g.drawImage(bg, 0, 0, 345, 559, this);
     }
 
