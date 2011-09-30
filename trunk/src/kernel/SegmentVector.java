@@ -29,13 +29,11 @@ public class SegmentVector extends Thread {
 
     public synchronized boolean addSegment(Segment segment) {
         int i = 0;
-        Pair p = null;
         Traitement t = Traitement.getInstance();
 
         if (t.getStateAutomate() != 0 /*&& t.getStateAutomate() != 11*/
                 && t.getStateAutomate() != 9 && t.getStateAutomate() != 10) {
-            for (i = 0; i < _rsdStack.size(); i++) {
-                p = (Pair) _rsdStack.get(i);
+            for (Pair p : _rsdStack) {
                 if (p.getSegment().get_seq_number() == segment.get_seq_number()) {
                     return false;
                 }
@@ -156,10 +154,8 @@ public class SegmentVector extends Thread {
     private synchronized void reSendSegment() throws IOException, InterruptedException {
         Date now = new Date();
         int i = 0;
-        Pair p = null;
 
-        for (i = 0; i < _rsdStack.size(); i++) {
-            p = (Pair) _rsdStack.get(i);
+        for (Pair p : _rsdStack) {
             if (now.getTime() - p.getCreationDate().getTime() > this._rto) {
                 p.setCreationDate(now);
                 // Réenvoi du segment (copié collé)
