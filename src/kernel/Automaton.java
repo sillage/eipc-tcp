@@ -103,12 +103,12 @@ public class Automaton {
     }
 
     public void goGoSend(int source) {
-        if ((this.stepbystep == true) && (source == 1)) {
+        if ((this.stepbystep) && (source == 1)) {
             if (!"".equals(stringToShow)) {
                 gui.getPanelConsole().insertLine(stringToShow, "Green");
                 stringToShow = "";
             }
-            if (send == true) {
+            if (send) {
                 send(segToSend);
                 send = false;
             }
@@ -276,7 +276,7 @@ public class Automaton {
      */
     public void EvaluateStateRcv(Segment seg) {
         //send (urg,ack,psh,rst,syn,fin)
-        if (seg.get_ACK() == true) {
+        if (seg.get_ACK()) {
             tcb.delSegment(seg);
         }
         switch (state) {
@@ -367,7 +367,7 @@ public class Automaton {
                 }
                 if (seg.get_seq_number() >= tcb.get_rcvNXT()) {
                     //Numéro acceptable
-                    if (seg.get_RST() == true) {
+                    if (seg.get_RST()) {
                         //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                         if (tcp.getisServer()) {
                             tcp.getServeur().retirerAllClient();
@@ -392,7 +392,7 @@ public class Automaton {
             case (ESTAB): //RECEPTION DE DONNEES DE L'APPLICATION
                 //Traitement du numéro de séquence (FENETRE NON GEREE) /!\
                 //gui.getPanelConsole().insertLine("RCVNXT:" + tcb.get_rcvNXT() + ": SEQ: "+ seg.get_seq_number(), "Green");
-                if (seg.get_FIN() == true) {
+                if (seg.get_FIN()) {
                     if (this.stepbystep == false) {
                         set_state(CLOSE_WAIT);
                     } else {
@@ -408,7 +408,7 @@ public class Automaton {
                     }
                 } else if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
                     //Numéro acceptable
-                    if (seg.get_RST() == true) {
+                    if (seg.get_RST()) {
                         //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                         if (this.stepbystep == false) {
                             set_state(CLOSED);
@@ -418,10 +418,10 @@ public class Automaton {
                         gui.getPanelConsole().insertLine("Error: Session is shuting down", "Red");
                         tcb.delAllSegment();
                     } else {
-                        if (seg.get_SYN() == true) {
+                        if (seg.get_SYN()) {
                             //FIXME Window...
                         }
-                        if (seg.get_ACK() == true) {
+                        if (seg.get_ACK()) {
                             if (tcb.get_sndUNA() < seg.get_ack_number() && seg.get_ack_number() <= tcb.get_sndNXT()) {
                                 tcb.set_sndUNA(seg.get_ack_number());
                                 tcb.delSegment(seg);
@@ -458,7 +458,7 @@ public class Automaton {
             case (FIN_WAIT_1):
                 //if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
                 //Numéro acceptable
-                if (seg.get_RST() == true) {
+                if (seg.get_RST()) {
                     //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                     if (this.stepbystep == false) {
                         set_state(CLOSED);
@@ -468,7 +468,7 @@ public class Automaton {
                     gui.getPanelConsole().insertLine("Error: Session is shuting down", "Red");
                     tcb.delAllSegment();
                 }
-                if (seg.get_ACK() == true) {
+                if (seg.get_ACK()) {
                     if (tcb.get_sndUNA() < seg.get_ack_number() && seg.get_ack_number() <= tcb.get_sndNXT()) {
                         tcb.set_sndUNA(seg.get_ack_number());
                         tcb.delSegment(seg);
@@ -485,7 +485,7 @@ public class Automaton {
                         this.goGoSend(0);
                     }
                 }
-                if (seg.get_ACK() == true) {
+                if (seg.get_ACK()) {
                     segToSend = tcb.send(false, true, false, false, false, false, "", tcb.get_sndNXT(), tcb.get_rcvNXT());
                     send = true;
                     this.goGoSend(0);
@@ -529,7 +529,7 @@ public class Automaton {
             case (CLOSE_WAIT):
                 if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
                     //Numéro acceptable
-                    if (seg.get_RST() == true) {
+                    if (seg.get_RST()) {
                         //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                         if (this.stepbystep == false) {
                             set_state(CLOSED);
@@ -554,7 +554,7 @@ public class Automaton {
                 hidden = false;
                 if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
                     //Numéro acceptable
-                    if (seg.get_RST() == true) {
+                    if (seg.get_RST()) {
                         //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                         if (this.stepbystep == false) {
                             set_state(CLOSED);
@@ -570,7 +570,7 @@ public class Automaton {
                 } else {
                     this.stateToSet = TIME_WAIT;
                 }
-                if (seg.get_FIN() == true) {
+                if (seg.get_FIN()) {
                     if (this.autoAck) {
                         segToSend = tcb.send(false, true, false, false, false, false, "", tcb.get_sndNXT(), tcb.get_rcvNXT());
                         send = true;
@@ -589,7 +589,7 @@ public class Automaton {
             case (CLOSING):
                 if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
                     //Numéro acceptable
-                    if (seg.get_RST() == true) {
+                    if (seg.get_RST()) {
                         //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                         if (this.stepbystep == false) {
                             set_state(CLOSED);
@@ -607,14 +607,14 @@ public class Automaton {
                         this.stateToSet = TIME_WAIT;
                     }
                 }
-                if (seg.get_ACK() == true) {
+                if (seg.get_ACK()) {
                     if (this.autoAck) {
                         segToSend = tcb.send(false, true, false, false, false, false, "", tcb.get_sndNXT(), tcb.get_rcvNXT());
                         send = true;
                         this.goGoSend(0);
                     }
                 }
-                if (seg.get_FIN() == true) {
+                if (seg.get_FIN()) {
                     if (this.autoAck) {
                         segToSend = tcb.send(false, true, false, false, false, false, "", tcb.get_sndNXT(), tcb.get_rcvNXT());
                         send = true;
@@ -630,7 +630,7 @@ public class Automaton {
             case (LAST_ACK):
                 if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
                     //Numéro acceptable
-                    if (seg.get_RST() == true) {
+                    if (seg.get_RST()) {
                         //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                         if (this.stepbystep == false) {
                             set_state(CLOSED);
@@ -657,7 +657,7 @@ public class Automaton {
                 hidden = true;
                 if (seg.get_seq_number() >= tcb.get_rcvNXT()) {// && seg.get_seq_number() < (tcb.get_rcvNXT()+tcb.get_rcvWND())) {
                     //Numéro acceptable
-                    if (seg.get_RST() == true) {
+                    if (seg.get_RST()) {
                         //Abandonner la session - Idem pour états FIN-WAIT-1/FIN-WAIT-2/CLOSE-WAIT
                         if (this.stepbystep == false) {
                             set_state(CLOSED);
@@ -668,7 +668,7 @@ public class Automaton {
                         tcb.delAllSegment();
                     }
                 }
-                if (seg.get_FIN() == true) {
+                if (seg.get_FIN()) {
                     if (this.autoAck) {
                         segToSend = tcb.send(false, true, false, false, false, false, "", tcb.get_sndNXT(), tcb.get_rcvNXT());
                         send = true;
