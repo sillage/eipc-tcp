@@ -6,7 +6,7 @@ package common;
  *
  *Cette classe contient tous les attributs d'un Segment TCP
  */
-public class Segment {
+public final class Segment {
 
     byte[] header;
     byte[] option;
