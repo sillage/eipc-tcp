@@ -26,11 +26,7 @@ public class SegmentVector extends Thread {
     }
 
     public synchronized boolean emptyStack() {
-        if (_rsdStack.size() == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return _rsdStack.isEmpty();
     }
 
     public synchronized boolean addSegment(Segment segment) {
