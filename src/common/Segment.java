@@ -728,31 +728,31 @@ public final class Segment {
      */
     public String dump() {
         String ret = new String();
-        Integer tmpi = 0;
+        Integer tmp = 0;
         int i = 0;
 
         //System.out.println(this.get_seq_number());
         for (i = 0; i < this.header.length; ++i) {
-            tmpi = (((Byte) (this.header[i])).intValue() & 0xF0) >> 4;
-            ret += Integer.toHexString(tmpi);
-            tmpi = (((Byte) (this.header[i])).intValue() & 0x0F);
-            ret += Integer.toHexString(tmpi);
+            tmp = (((Byte) (this.header[i])).intValue() & 0xF0) >> 4;
+            ret += Integer.toHexString(tmp);
+            tmp = (((Byte) (this.header[i])).intValue() & 0x0F);
+            ret += Integer.toHexString(tmp);
         }
         //System.out.println(ret);
         if (this.option != null) {
             for (i = 0; i < this.option.length; ++i) {
-                tmpi = (((Byte) (this.option[i])).intValue() & 0xF0) >> 4;
-                ret += Integer.toHexString(tmpi);
-                tmpi = (((Byte) (this.option[i])).intValue() & 0x0F);
-                ret += Integer.toHexString(tmpi);
+                tmp = (((Byte) (this.option[i])).intValue() & 0xF0) >> 4;
+                ret += Integer.toHexString(tmp);
+                tmp = (((Byte) (this.option[i])).intValue() & 0x0F);
+                ret += Integer.toHexString(tmp);
             }
         }
         if (this.data != null) {
             for (i = 0; i < this.data.length; ++i) {
-                tmpi = (((Byte) (this.data[i])).intValue() & 0xF0) >> 4;
-                ret += Integer.toHexString(tmpi);
-                tmpi = (((Byte) (this.data[i])).intValue() & 0x0F);
-                ret += Integer.toHexString(tmpi);
+                tmp = (((Byte) (this.data[i])).intValue() & 0xF0) >> 4;
+                ret += Integer.toHexString(tmp);
+                tmp = (((Byte) (this.data[i])).intValue() & 0x0F);
+                ret += Integer.toHexString(tmp);
             }
         }
         return ret;
