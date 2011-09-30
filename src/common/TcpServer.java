@@ -3,7 +3,8 @@ package common;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import Interface.GUIManager;
-import kernel.*;
+import kernel.Automaton;
+import kernel.Traitement;
 
 /**
  * Class Serveur TCP
@@ -15,7 +16,7 @@ public class TcpServer implements Runnable {
 
     public int port;
     // Tableau des clients connectés
-    private static ArrayList clients;
+    private static ArrayList<ServeurDialogue> clients;
     // Tableau
     private static ServerSocket sockServ;
     private static int running = 0;
@@ -38,7 +39,7 @@ public class TcpServer implements Runnable {
      */
     @Override
     public void run() {
-        if (port < 1024 || port > 65535) {
+        if (port < 1024 || 65535 < port) {
             gui.getPanelConsole().insertLine("Error: port number must be between 1024 and 65535", "Red");
         }
         try {
@@ -67,9 +68,9 @@ public class TcpServer implements Runnable {
      * @param msg, msg à envoyer
      */
     public void sendMsg(String msg) {
-        for (int i = 0; i < clients.size(); i++) {
-            if ((ServeurDialogue) clients.get(i) != null) {
-                ((ServeurDialogue) clients.get(i)).envoyer(msg);
+        for (ServeurDialogue client : clients) {
+            if (client != null) {
+                client.envoyer(msg);
             }
         }
     }
@@ -78,27 +79,22 @@ public class TcpServer implements Runnable {
      * Ferme un client
      * @param serveurDialogue
      */
-    public static void retirerClient(ServeurDialogue serveurDialogue) {
-        for (int i = 0; i < clients.size(); i++) {
-            if ((ServeurDialogue) clients.get(i) == serveurDialogue) {
-                ((ServeurDialogue) clients.get(i)).stop();
-                clients.remove(i);
-                break;
-            }
+    private static void retirerClient(ServeurDialogue serveurDialogue) {
+        if (clients.contains(serveurDialogue)) {
+            clients.get(clients.indexOf(serveurDialogue)).stop();
+            clients.remove(serveurDialogue);
         }
     }
 
     public void retirerAllClient() {
-        for (int i = 0; i < clients.size(); i++) {
-            retirerClient((ServeurDialogue) clients.get(i));
+        for (ServeurDialogue client : clients) {
+            retirerClient(client);
         }
     }
 
     public void close() {
         running = 0;
-        for (int i = 0; i < clients.size(); i++) {
-            retirerClient((ServeurDialogue) clients.get(i));
-        }
+        retirerAllClient();
         try {
             sockServ.close();
         } catch (Exception e) {
