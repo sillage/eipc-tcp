@@ -1,6 +1,6 @@
 package kernel;
 
-import common.*;
+import common.Segment;
 import java.net.Socket;
 import java.net.ServerSocket;
 
