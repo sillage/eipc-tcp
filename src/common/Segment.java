@@ -84,25 +84,25 @@ public class Segment {
 
         tmps = s.substring(0, 4);
         //System.out.println("Port source -- " + l.parseLong(tmps, 16)+ "   (" + tmps + ")");
-        this.set_portsource(l.parseLong(tmps, 16));
+        this.set_portsource(Long.parseLong(tmps, 16));
         tmps = s.substring(4, 8);
         //System.out.println("Pour dest -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_port_dest(l.parseLong(tmps, 16));
+        this.set_port_dest(Long.parseLong(tmps, 16));
         tmps = s.substring(8, 16);
-        System.out.println("Seg numb -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_sequence(l.parseLong(tmps, 16));
+        System.out.println("Seg numb -- " + Long.parseLong(tmps, 16) + "   (" + tmps + ")");
+        this.set_sequence(Long.parseLong(tmps, 16));
         tmps = s.substring(16, 24);
         //System.out.println("Ack numb -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_ack(l.parseLong(tmps, 16));
+        this.set_ack(Long.parseLong(tmps, 16));
         tmps = s.substring(24, 25);
         //System.out.println("Offset -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_offset(l.parseLong(tmps, 16));
+        this.set_offset(Long.parseLong(tmps, 16));
         tmps = s.substring(25, 26);
         //System.out.println("Reserved -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_reserved(l.parseLong(tmps, 16));
+        this.set_reserved(Long.parseLong(tmps, 16));
         tmps = s.substring(26, 27);
         //System.out.println("C -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        ll = l.parseLong(tmps, 16);
+        ll = Long.parseLong(tmps, 16);
         if ((ll & 0x8) != 0) {
             this.set_CWR(true);
         } else {
@@ -113,7 +113,7 @@ public class Segment {
         this.set_ECN(b);
         tmps = s.substring(26, 27);
         //System.out.println("U -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        ll = l.parseLong(tmps, 16);
+        ll = Long.parseLong(tmps, 16);
         if ((ll & 0x2) != 0) {
             this.set_URG(true);
         } else {
@@ -121,7 +121,7 @@ public class Segment {
         }
         tmps = s.substring(26, 27);
         //System.out.println("A -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        ll = l.parseLong(tmps, 16);
+        ll = Long.parseLong(tmps, 16);
         if ((ll & 0x1) != 0) {
             this.set_ACK(true);
         } else {
@@ -129,7 +129,7 @@ public class Segment {
         }
         tmps = s.substring(27, 28);
         //System.out.println("P -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        ll = l.parseLong(tmps, 16);
+        ll = Long.parseLong(tmps, 16);
         if ((ll & 0x8) != 0) {
             this.set_PSH(true);
         } else {
@@ -137,7 +137,7 @@ public class Segment {
         }
         tmps = s.substring(27, 28);
         //System.out.println("R -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        ll = l.parseLong(tmps, 16);
+        ll = Long.parseLong(tmps, 16);
         if ((ll & 0x4) != 0) {
             this.set_RST(true);
         } else {
@@ -145,7 +145,7 @@ public class Segment {
         }
         tmps = s.substring(27, 28);
         //System.out.println("S -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        ll = l.parseLong(tmps, 16);
+        ll = Long.parseLong(tmps, 16);
         if ((ll & 0x2) != 0) {
             this.set_SYN(true);
         } else {
@@ -153,7 +153,7 @@ public class Segment {
         }
         tmps = s.substring(27, 28);
         //System.out.println("F -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        ll = l.parseLong(tmps, 16);
+        ll = Long.parseLong(tmps, 16);
         if ((ll & 0x1) != 0) {
             this.set_FIN(true);
         } else {
@@ -161,13 +161,13 @@ public class Segment {
         }
         tmps = s.substring(28, 32);
         //System.out.println("Window -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_window(l.parseLong(tmps, 16));
+        this.set_window(Long.parseLong(tmps, 16));
         tmps = s.substring(28, 32);
         //System.out.println("Checksum -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_checksum(l.parseLong(tmps, 16));
+        this.set_checksum(Long.parseLong(tmps, 16));
         tmps = s.substring(28, 32);
         //System.out.println("Urgent pointeur -- " + l.parseLong(tmps, 16) + "   (" + tmps + ")");
-        this.set_pointeur_urgent(l.parseLong(tmps, 16));
+        this.set_pointeur_urgent(Long.parseLong(tmps, 16));
 
         tt = s.substring(32);
         data = new byte[(tt.length() / 2)];
@@ -242,12 +242,12 @@ public class Segment {
         Long i;
         System.out.println("Offset set -- " + offset);
         tmpi = ((offset & 0x0f) << 4);
-        System.out.println(tmpi + "--" + tmpi.toBinaryString(tmpi));
+        System.out.println(tmpi + "--" + Long.toBinaryString(tmpi));
         tmpb = header[12];
         i = tmpb.longValue();
         i = i & 0xF0;
         i = tmpi | i;
-        System.out.println("Set Offset : " + i.toBinaryString(i));
+        System.out.println("Set Offset : " + Long.toBinaryString(i));
         header[12] = i.byteValue();
     }
 
@@ -475,11 +475,11 @@ public class Segment {
         tmpb = header[12];
         tmpi = tmpb.longValue();
         tmpi = tmpi & 0xf0;
-        System.out.println("get  -- " + tmpi.toBinaryString(tmpi));
+        System.out.println("get  -- " + Long.toBinaryString(tmpi));
 
         tmpi = tmpi >> 4;
 
-        System.out.println("get  -- " + tmpi.toBinaryString(tmpi));
+        System.out.println("get  -- " + Long.toBinaryString(tmpi));
         return tmpi;
     }
 
@@ -734,25 +734,25 @@ public class Segment {
         //System.out.println(this.get_seq_number());
         for (i = 0; i < this.header.length; ++i) {
             tmpi = (((Byte) (this.header[i])).intValue() & 0xF0) >> 4;
-            ret += tmpi.toHexString(tmpi);
+            ret += Integer.toHexString(tmpi);
             tmpi = (((Byte) (this.header[i])).intValue() & 0x0F);
-            ret += tmpi.toHexString(tmpi);
+            ret += Integer.toHexString(tmpi);
         }
         //System.out.println(ret);
         if (this.option != null) {
             for (i = 0; i < this.option.length; ++i) {
                 tmpi = (((Byte) (this.option[i])).intValue() & 0xF0) >> 4;
-                ret += tmpi.toHexString(tmpi);
+                ret += Integer.toHexString(tmpi);
                 tmpi = (((Byte) (this.option[i])).intValue() & 0x0F);
-                ret += tmpi.toHexString(tmpi);
+                ret += Integer.toHexString(tmpi);
             }
         }
         if (this.data != null) {
             for (i = 0; i < this.data.length; ++i) {
                 tmpi = (((Byte) (this.data[i])).intValue() & 0xF0) >> 4;
-                ret += tmpi.toHexString(tmpi);
+                ret += Integer.toHexString(tmpi);
                 tmpi = (((Byte) (this.data[i])).intValue() & 0x0F);
-                ret += tmpi.toHexString(tmpi);
+                ret += Integer.toHexString(tmpi);
             }
         }
         return ret;
