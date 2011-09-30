@@ -73,7 +73,7 @@ public class Segment {
         String tt;
         long ll = 0;
         Long l = ll;
-        Integer tmpi = 0;
+        Integer tmp = 0;
         boolean b = false;
 
 
@@ -176,8 +176,8 @@ public class Segment {
             if (tmps.equals("00")) {
             } else {
                 tmps = tt.substring(i, i + 2);
-                tmpi = Integer.decode("0x" + tmps);
-                data[a] = tmpi.byteValue();
+                tmp = Integer.decode("0x" + tmps);
+                data[a] = tmp.byteValue();
             }
         }
     }
