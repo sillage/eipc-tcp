@@ -10,7 +10,7 @@ import java.net.ServerSocket;
  * @author Titi
  *
  */
-public class Traitement {
+public final class Traitement {
 
     private static Traitement instance;
     public Automaton automate;
