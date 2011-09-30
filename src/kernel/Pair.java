@@ -1,9 +1,3 @@
-/*
- * Created on 7 octobre 2007
- *
- * TODO To change the template for this generated file go to
- * Window - Preferences - Java - Code Style - Code Templates
- */
 package kernel;
 
 import java.util.Date;
@@ -13,8 +7,6 @@ import common.Segment;
 /**
  * @author Sebastien Gislais
  *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
  * This class is an equivalence of the c++ class "pair"
  */
 public class Pair {
