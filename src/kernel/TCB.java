@@ -28,8 +28,8 @@ public class TCB {
     private boolean _SYN = false;
     private boolean _FIN = false;
     private String _data;
-    public int portClient;
-    public int portServer;
+    public long portClient;
+    public long portServer;
     public int type;
     private SegmentVector _rsdVector;
     /**

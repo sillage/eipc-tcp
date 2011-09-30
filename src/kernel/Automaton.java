@@ -288,7 +288,7 @@ public class Automaton {
                 if (seg.get_SYN()) {
                     //p24 RFC
                     //gui.getPanelConsole().insertLine("ACK (=seg recu): " + seg.get_seq_number(), "Green");
-                    tcb.portClient = (int) seg.get_port_source(); //FIXME
+                    tcb.portClient = seg.get_port_source();
                     tcb.type = 0;
                     tcb.set_rcvNXT(calcSeq(seg.get_seq_number()));
                     tcb.set_IRS(seg.get_seq_number());
