@@ -354,7 +354,7 @@ public class Automaton {
                 }
                 break;
             case (SYN_RCVD):
-                //todo test snd.una <= seg.ack <= snd.nxt
+                // TODO test snd.una <= seg.ack <= snd.nxt
                 if (seg.get_ACK()) {
                     tcb.delSegment(seg);
                     if (this.stepbystep) {
