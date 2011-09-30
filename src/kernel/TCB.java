@@ -1,7 +1,5 @@
 package kernel;
 
-import Interface.GUIManager;
-import kernel.SegmentVector;
 import common.Segment;
 
 public class TCB {

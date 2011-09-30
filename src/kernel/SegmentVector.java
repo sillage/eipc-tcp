@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Vector;
 
-import kernel.Pair;
-import kernel.TCB;
 import common.Segment;
 import common.TCPManager;
 import Interface.GUIManager;
