@@ -6,7 +6,8 @@ import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import Interface.GUIManager;
-import kernel.*;
+import kernel.Automaton;
+import kernel.Traitement;
 
 /** 
  * Client TCP
@@ -70,18 +71,12 @@ public class TcpClient implements Runnable {
                     Segment seg = new Segment(line);
                     //System.out.println("Client Reception");
                     seg.display_text();
-                    long tmp = (seg.get_seq_number());
-                    gui.getPanelReceive().setSeqNumber(String.valueOf(tmp));
-                    tmp = seg.get_ack_number();
-                    gui.getPanelReceive().setAckNumber(String.valueOf(tmp));
-                    tmp = seg.get_offset();
-                    gui.getPanelReceive().setOffset(String.valueOf(tmp));
-                    tmp = seg.get_window();
-                    gui.getPanelReceive().setFenetre(String.valueOf(tmp));
-                    tmp = seg.get_checksum();
-                    gui.getPanelReceive().setChecksum(String.valueOf(tmp));
-                    tmp = seg.get_pointeur_urgent();
-                    gui.getPanelReceive().setPointUrg(String.valueOf(tmp));
+                    gui.getPanelReceive().setSeqNumber(String.valueOf(seg.get_seq_number()));
+                    gui.getPanelReceive().setAckNumber(String.valueOf(seg.get_ack_number()));
+                    gui.getPanelReceive().setOffset(String.valueOf(seg.get_offset()));
+                    gui.getPanelReceive().setFenetre(String.valueOf(seg.get_window()));
+                    gui.getPanelReceive().setChecksum(String.valueOf(seg.get_checksum()));
+                    gui.getPanelReceive().setPointUrg(String.valueOf(seg.get_pointeur_urgent()));
                     /*byte[] b = seg.get_data();
                     if (b != null)
                     {
@@ -89,36 +84,12 @@ public class TcpClient implements Runnable {
                     gui.getPanelReceive().setData(so);
                     }*/
                     gui.getPanelReceive().setData(data);
-                    if (seg.get_URG()) {
-                        gui.getPanelReceive().setURG(true);
-                    } else {
-                        gui.getPanelReceive().setURG(false);
-                    }
-                    if (seg.get_ACK()) {
-                        gui.getPanelReceive().setACK(true);
-                    } else {
-                        gui.getPanelReceive().setACK(false);
-                    }
-                    if (seg.get_PSH()) {
-                        gui.getPanelReceive().setPSH(true);
-                    } else {
-                        gui.getPanelReceive().setPSH(false);
-                    }
-                    if (seg.get_SYN()) {
-                        gui.getPanelReceive().setSYN(true);
-                    } else {
-                        gui.getPanelReceive().setSYN(false);
-                    }
-                    if (seg.get_RST()) {
-                        gui.getPanelReceive().setRST(true);
-                    } else {
-                        gui.getPanelReceive().setRST(false);
-                    }
-                    if (seg.get_FIN()) {
-                        gui.getPanelReceive().setFIN(true);
-                    } else {
-                        gui.getPanelReceive().setFIN(false);
-                    }
+                    gui.getPanelReceive().setURG(seg.get_URG());
+                    gui.getPanelReceive().setACK(seg.get_ACK());
+                    gui.getPanelReceive().setPSH(seg.get_PSH());
+                    gui.getPanelReceive().setSYN(seg.get_SYN());
+                    gui.getPanelReceive().setRST(seg.get_RST());
+                    gui.getPanelReceive().setFIN(seg.get_FIN());
                     gui.getPanelReceive().segment = seg;
                     traitement.makeTreatmentReceive(seg);
                 }
