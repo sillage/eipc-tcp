@@ -429,8 +429,6 @@ public class Automaton {
                                 tcb.set_sndNXT(seg.get_ack_number());//NEXT. (pas modif)
                             }
                         } else {
-
-                            {
                                 // Récupération des données
                                 tcb.set_rcvNXT(seg.get_seq_number());//NEXT.
                                 //tcb.set_sndNXT(this.calcSeq(seg.get_ack_number())); //NEXT.
@@ -439,8 +437,6 @@ public class Automaton {
                                     send = true;
                                     this.goGoSend(0);
                                 }
-
-                            }
                         }
                     }
                 } else {
