@@ -1,6 +1,7 @@
 package Interface;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import myLib.ImageDraw;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;

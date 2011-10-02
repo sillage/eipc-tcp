@@ -7,7 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import Interface.GUIManager;
-import kernel.*;
+import kernel.Traitement;
 
 /**
  * Class gérant la conversation entre le serveur et un client

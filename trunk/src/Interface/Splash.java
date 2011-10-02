@@ -1,8 +1,13 @@
 package Interface;
 
 //Upadates: 2004.04.02, 2004.01.09
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JWindow;
 
 /**
  * A splash screen to show while the main program is loading. A typical use
