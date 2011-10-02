@@ -72,11 +72,11 @@ public class Interface extends JFrame implements ActionListener {
         this.getContentPane().add(panel_console);
 
         // ajout panneau_banner
-        panel_banner = new ImageDraw("../Interface/Img/bantcp.jpg", 7, 308, 301, 80);
+        panel_banner = new ImageDraw("/Interface/Img/bantcp.jpg", 7, 308, 301, 80);
         this.getContentPane().add(panel_banner.getPicture());
 
         // ajout panneau_banner
-        foot_banner = new ImageDraw("../Interface/Img/footban.jpg", 320, 577, 345, 21);
+        foot_banner = new ImageDraw("/Interface/Img/footban.jpg", 320, 577, 345, 21);
         this.getContentPane().add(foot_banner.getPicture());
 
         // création du singleton pour manager les panels entres eux
