@@ -10,8 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import common.*;
-
+import common.TCPManager;
+import common.TcpClient;
+import common.TcpServer;
 import myLib.BoundedTextField;
 
 /**
@@ -117,6 +118,7 @@ public class ConnectionDialog extends JDialog implements ActionListener, ItemLis
     /**
      * Gestion des actions liées aux boutons
      */
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == Bok) {
             TCPManager tcp = TCPManager.getInstance();
@@ -144,6 +146,7 @@ public class ConnectionDialog extends JDialog implements ActionListener, ItemLis
     /**
      * Gestion des actions liées au changement de type
      */
+    @Override
     public void itemStateChanged(ItemEvent item) {
         // action pour la ckeckbox step_by_step
         if (item.getSource() == BoxClient
