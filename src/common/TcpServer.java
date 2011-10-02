@@ -50,7 +50,7 @@ public class TcpServer implements Runnable {
         }
         traitement.makeTreatmentOpen(Automaton.SERVER);
 
-        clients = new ArrayList();
+        clients = new ArrayList<ServeurDialogue>();
         try {
             while (running == 1) {
                 clients.add(new ServeurDialogue(sockServ.accept()));
