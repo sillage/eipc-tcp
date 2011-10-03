@@ -31,6 +31,13 @@ class Clock extends JTextField {
         m_t.start();
     }
 
+    public void endClock() {
+        
+      //  m_t.restart();
+  // trouver une autre solution 
+        m_t.stop();
+    }
+    
     private class ClockTickAction implements ActionListener {
 
         @Override
