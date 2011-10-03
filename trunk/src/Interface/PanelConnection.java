@@ -119,6 +119,21 @@ public class PanelConnection extends JPanel implements ActionListener {
         clock.startClock();
     }
 
+    public void erase_infos(String type,
+                        String ipsrc,
+            String ipdest,
+            String portlocal,
+            String portdest,
+            String ident) {
+        TypeLabel2.setText(type);
+        IpSrcLabel2.setText(ipsrc);
+        IpDestLabel2.setText(ipdest);
+        PortLocalLabel2.setText(portlocal);
+        PortDestLabel2.setText(portdest);
+        IdentLabel2.setText(ident);
+        clock.endClock();
+    }
+    
     @Override
     public void actionPerformed(ActionEvent action) {
         // TODO Auto-generated method stub
@@ -128,10 +143,12 @@ public class PanelConnection extends JPanel implements ActionListener {
 
         if (action.getSource() == DecoBtn) {
             //if (traitement.getStateAutomate() == 4) {
-            if (tcp.getisClient()) {
+            if (tcp.getisClient()) {        
+                 gui.getPanelConnection().erase_infos("Non défini", "Non défini", "Non défini", "Non défini", "Non défini","Non défini");
                 tcp.getClient().traitement.makeTreatmentClose();
             }
             if (tcp.getisServer()) {
+                 gui.getPanelConnection().erase_infos("Non défini", "Non défini", "Non défini", "Non défini", "Non défini","Non défini");
                 tcp.getServeur().traitement.makeTreatmentClose();
             }
             //}

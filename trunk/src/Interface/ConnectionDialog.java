@@ -100,7 +100,7 @@ public class ConnectionDialog extends JDialog implements ActionListener, ItemLis
         IdentLabel.setBounds(10, 160, 80, 20);
         dialogPanel.add(IdentLabel);
         Identifiant = new BoundedTextField(null, 15);
-        Identifiant.setText("TeamCP");
+        Identifiant.setText("Gislais");
         Identifiant.setBounds(120, 160, 150, 20);
         dialogPanel.add(Identifiant);
 
