@@ -37,7 +37,7 @@ public class Interface extends JFrame implements ActionListener {
      */
     private void CreateAndShowGUI() {
         // propriétés fenêtre principale
-        this.setTitle("Projet TCP - TeamCP");
+        this.setTitle("TCP-IP - Belkahia, Benchikh, Gislais, Houis, Lemoigno, Lof");
         this.setSize(new Dimension(995, 660));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -77,7 +77,7 @@ public class Interface extends JFrame implements ActionListener {
         //this.getContentPane().add(panel_banner.getPicture());
 
         // ajout panneau_banner
-       //foot_banner = new ImageDraw("/Interface/Img/footban.jpg", 320, 577, 345, 21);
+       // foot_banner = new ImageDraw("/Interface/Img/footban.jpg", 320, 577, 345, 21);
         //this.getContentPane().add(foot_banner.getPicture());
 
         // création du singleton pour manager les panels entres eux
@@ -95,8 +95,8 @@ public class Interface extends JFrame implements ActionListener {
      * @param args
      */
     public static void main(String[] args) {
-        Splash s = new Splash(2000);
-        s.dispose(0);
+       // Splash s = new Splash(2000);
+       // s.dispose(0);
         SwingUtilities.invokeLater(new Runnable() {
 
             @Override
