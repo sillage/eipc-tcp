@@ -1,0 +1,2 @@
+Étude et Implémentation de protocole de communication (avec Sécurité) : Transmission Control Protocol (RFC 793).
+Projet à but éducatif pour comprendre le fonctionnement d'un protocole de communication à EPITA en majeure TCOM.
